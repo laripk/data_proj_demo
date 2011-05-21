@@ -60,20 +60,22 @@ data sources
 		eurostat dictionaries
 			all dictionaries
 				http://epp.eurostat.ec.europa.eu/NavTree_prod/everybody/BulkDownloadListing?sort=1&file=dic%2Fall_dic.zip
-	NUTS (region definitions)
-		http://simap.europa.eu/codes-and-nomenclatures/codes-nuts/index_en.htm
-			http://simap.europa.eu/codes-and-nomenclatures/codes-nuts/codes-nuts-table_en.htm
-				complete page saved directly, then hand-deleted js files
-			http://simap.europa.eu/codes-and-nomenclatures/codes-nuts/nuts_2008.ods
-				this is the most useful, esp since it has mappings to nuts 2003
-		for future reference/not downloaded:
-			http://epp.eurostat.ec.europa.eu/portal/page/portal/nuts_nomenclature/correspondence_tables/postcodes_and_nuts
-				not all countries available
-			http://epp.eurostat.ec.europa.eu/portal/page/portal/gisco/popups/references/administrative_units_statistical_units_1
-				only NUTS 2003 & 2006 available
 
 
+-----------------------
+Step 2: Import the Data
 
+Or at least some of it. To make sure I have time to write all the 
+basic functionality of this application, I will only import a very 
+minimal amount of data at this time. If I have time later I will 
+come back and import additional files.
 
+First, I need a table defining all the regions. 
+This data is coming from original_data/eurostat_data/all_dic/en/geo.dic
+(copied to data/geo.dic)
+This file has two columns, the code and the description.
+I noticed that the descriptions of the regions within countries do not
+repeat the name of the country, so I am going to add that in during the 
+import process.
 
 
