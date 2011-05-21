@@ -1,0 +1,11 @@
+CP	Current prices
+KP	Constant prices
+KP95	Constant prices 1995
+CLV2000	Chain-linked volumes, reference year 2000 (at 2000 exchange rates)
+NOMINAL	Nominal value
+PRC	Nominal price
+REAL	Real value
+REAL_PRC	Real price
+DEFLATED	Deflated
+VOL	Volume
+NOT_APP	Not applicable

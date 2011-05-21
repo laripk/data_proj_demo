@@ -1,0 +1,33 @@
+TOTAL	Total waste treatment
+GEN	Waste generated
+MKT	Products put on the market
+COL	Waste collected
+COL_HH	Waste collected from households
+COL_OTH	Waste collected from other sources
+TRT	Total waste treatment
+RCV_REU	Total recovery and reuse
+REU	Reuse
+RCV	Recovery
+RCV_E	Energy recovery
+RCV_NE	Recovery other than energy recovery
+RCV_B	Recovery other than energy recovery - Backfilling
+RCV_O	Recovery other than energy recovery - Except backfilling
+RCV_I	Incineration with energy recovery at waste incinerators
+RCY_REU	Total recycling and reuse
+RCY	Recycling
+RCY_M	Material recycling
+RCY_O	Other forms of recycling (including composting)
+RCY_OTH	Other forms of recycling
+RCY_MAT	Material recycling
+RCV_NRG	Energy recovery
+RCV_OTH	Other forms of recovery
+RCV_INC	Recovery including incineration
+INC_RCV	Total incineration (including energy recovery)
+INC	Incineration without energy recovery
+DSP	Disposal
+DEP	Deposit onto or into land
+LND	Land treatment and release into water bodies
+DSP_D	Deposit onto or into land
+DSP_O	Land treatment and release into water bodies
+RCV_RT	Recovery rate
+RCY_RT	Recycling rate

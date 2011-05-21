@@ -1,0 +1,10 @@
+TOTAL	Total
+0	Zero LSU
+0_LT_5	From 0 to less than 5 LSU
+5_LT_10	From 5 to less than 10 LSU
+10_LT_15	From 10 to less than 15 LSU
+15_LT_20	From 15 to less than 20 LSU
+20_LT_50	From 20 to less than 50 LSU
+50_LT_100	From 50 to less than 100 LSU
+100_LT_500	From 100 to less than 500 LSU
+GE_500	500 or more LSU

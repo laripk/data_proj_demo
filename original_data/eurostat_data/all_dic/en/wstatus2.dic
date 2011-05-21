@@ -1,0 +1,47 @@
+POP	Total population
+TOTAL	Total
+POP_GE16	Population - 16 years and over
+ACT	Active population
+ACT_UNK	Active population - Unknown
+EMP	Employment
+EMP_OTH	Employment - Other
+EMP_NOT_SELF	Employment excluding self-employed
+SAL	Employees
+MW	Manual workers
+MW_IS	Manual workers in industry and services
+NMW	Non manual workers
+NMW_IS	Non manual workers in industry and services
+NOT_SAL	Not employees
+NOT_EMP	Non employment
+EMPLER_SELF	Employers and self-employed
+EMPLER	Employers
+SELF	Self-employed
+NOT_FAM	Employment excluding family workers
+FAM	Family workers
+ARM	Armed force
+H_WORK	Doing housework, looking after children or other persons
+UNE	Unemployment
+UNE_INACT	Unemployment and inactive population
+INACT	Inactive population
+INACT_UNK	Inactive population - Unknown
+INACT_LT15	Inactive population - Less than 15 years
+INACT_65MAX	Inactive population - 65 years and over
+EDUC	Persons in education
+AT_HOME	House keepers
+DISAB	Disabiled
+LAYOFF	Awaiting recall to work (on lay-off)
+RETIR	Retired
+INACT_OTH	Inactive population - Other
+OTHER	Other
+NRESP	No response
+UNK	Unknown
+ACT_EXACT	Active population or persons having worked before
+ILLDIS	Own illness or disability
+PERRESP	Personal/family responsibilities
+NOWORK	Believe no work is available
+NOT_APP	Not applicable
+PRACT	Practising
+PACT	Professionally active
+LIC	Licensed to practise
+FT	Full-time
+PT	Part-time

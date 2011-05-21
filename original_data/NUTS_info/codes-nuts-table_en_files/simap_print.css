@@ -1,0 +1,80 @@
+
+body		{font:normal 8.5pt verdana,arial,helvetica,sans-serif; color:#333;}
+
+abbr, acronym	{border:0;}
+
+#Top, #Language, #Path, #Menu, #Office, #Footer
+		{display:none;}
+
+#Wrapper h1	{margin:0; padding:0; font:normal 24pt/100% "palatino linotype",georgia,serif; text-align:center;}
+#Wrapper h1 span	{display:none;}
+#Wrapper h1 em	{display:block; font:normal small-caps 12pt "palatino linotype",georgia,serif;}
+
+/*#Header		{border-bottom:2pt solid #777; padding-bottom:10pt; margin-bottom:10pt;} 
+*/
+
+#Main h2, #Main h3, #Main h4, #Main h5, #Main h6
+		{font-weight:normal; font-family:"palatino linotype",georgia,serif; margin:0 0 5pt 0; padding:0;}
+#Main h2		{font-size:20pt;}
+#Main h3		{font-size:18pt;}
+#Main h4		{font-size:16pt;}
+#Main h5		{font-size:14pt;}
+#Main h6		{font-size:12pt;}
+
+#Main p, #Main ul, #Main ol, #Main dl
+		{text-align:justify; padding:0; margin:0 0 10pt 0; line-height:160%;}
+
+#Main ul, #Main ol	{margin-left:30pt;}
+
+#Main dt		{font-weight:bold;}
+#Main dd		{margin:0 0 5pt 15pt;}
+
+#Main a, #Main a:visited
+		{color:#000;}
+#Main table	{margin:10pt 0;}
+#Main caption	{text-align:center; font-weight:bold;}
+#Main th	 	{font-weight:bold; font-size:100%; padding:2pt 4pt; border:1pt solid #333;}
+#Main td	 	{font-size:100%; padding:2pt 4pt; border:1pt solid #999;}
+
+#Main p#Assistance	{display:none;}
+
+#Main form		{padding:10px 0; margin:0;}
+#Main td form		{padding:0;}
+
+#Main fieldset		{padding:0; margin:0 0 20px 0; border:0; border-top:10px solid #ccc;}
+#Main legend		{padding:0 10px 0 0; margin:0 !important; margin-left:-8px; font-weight:bold; font-size:110%;}
+#Main form p		{margin:15px 0 0 0;}
+
+#Main form p.INFO		{border:1px dashed #ccc; padding:5px;}
+#Main form p.EMPH	{color:#000; font-weight:bold;}
+#Main form p.Hidden	{display:none;}
+#Main form p.Buttons	{text-align:center;}
+#Main form label		{float:left; clear:both; display:block; width:33%; text-align:right; padding:0 1% 0 0; font-weight:bold;}
+
+#Main form .Self		{margin-left:34%;}
+#Main form .ENT		{width:99.5%;}
+
+#Main form input,
+#Main form textarea	{width:50%; border:1px solid #999; margin:0; padding:3px;}
+#Main form select		{border:1px solid #999; margin:0; padding:1px; width:51%;}
+#Main form select.Short	{width:16%;}
+#Main form input.Date,
+#Main form input.Short	{width:15%;}
+#Main form input.Check	{width:auto; padding:0; border:0;}
+#Main form input.Radio	{width:auto; padding:0; border:0;}
+#Main form input.BTN	{width:auto; padding:0 10px; margin:0 0 5px 0;}
+
+
+#Main form input,
+#Main form select,
+#Main form textarea	{font-size:100%; font-family:verdana,arial,helvetica,sans-serif;}
+
+#Main form .Mandatory	{color:#000;}
+
+#Main form img		{border:0; margin:0 5px 3px 5px; vertical-align:bottom;}
+#Main form table img	{margin:0; vertical-align:middle;}
+
+#Main table	 	{width:99.5%;}
+
+.w01	{width:1%;}
+.NW	{white-space:nowrap;}

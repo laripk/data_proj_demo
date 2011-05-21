@@ -1,0 +1,18 @@
+HRST	Human Resources in Science and Technology
+HRSTE	Human Resources in Science and Technology - Education
+HRSTO	Human Resources in Science and Technology - Occupation
+HRSTC	Human Resources in Science and Technology - Core
+HRSTU	Human Resources in Science and Technology - Unemployed
+SE	Scientists and Engineers
+ALL_HR	All Human Resources
+NON_HRST	Human Resources not in Science and Technology
+NON_HRSTU	Human Resources not in Science and Technology  - Unemployed
+EMP_HRST	Employed Human Resources in Science and Technology
+1	Per household, except Austria where per holding
+2	Per household member, except Austria where per person living full-board on the holding
+3	Per consumer unit, except Austria where per member of the family labour force
+4	Aggregates
+I	Household, except Austria where holdings
+II	Household members, except Austria where number of persons living full-board on the holding
+III	Consumer units, except Austria where members of the family labour force
+JOB_MOB_HRST	Job-to-job mobile HRST

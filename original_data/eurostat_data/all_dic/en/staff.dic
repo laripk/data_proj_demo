@@ -1,0 +1,35 @@
+PHYS	Physicians or doctors
+PHYS_PRACT	Practising physicians or doctors
+PHYS_ACT	Professionally active physicians or doctors
+PHYS_LIC	Physicians or doctors licensed to practise
+DENTIST	Dentists
+DENTIST_PRACT	Practising dentists
+DENTIST_ACT	Professionally active dentists
+DENTIST_LIC	Dentists licensed to practise
+PHARM	Pharmacists
+PHARM_PRACT	Practising pharmacists
+PHARM_ACT	Professionally active pharmacists
+PHARM_LIC	Pharmacists licensed to practise
+KINE	Physiotherapists
+MID	Midwives
+NURSE	Nurses and midwives
+NURSE_QUAL	Qualified nurses
+NURSE_Q_MID	Qualified nurses and midwives (total)
+NURSE_ASO	Associate nurses
+NURSE_Q_ASO	All nurses (qualified and associate nurses)
+NURSE_MID	Nursing professionals (total)
+CARING	Caring personnel
+NURSE_CARING	Nursing and caring professionals  (total)
+SPEC	Medical or surgical specialist
+INSTR_TEACH	Classeroom teachers (ISCED 0-4) and academic staff (ISCED 5-6)
+INSTR_AID	Teacher aides (ISCED 0-4) and teaching/research assistants (ISCED 5-6)
+SUPP	Professional support for students
+SUPP_PED	Pedagogical support (ISCED 0-4); academic support (ISCED 5-6)
+SUPP_HS	Health and social support (ISCED 0-6)
+MANAG_SCH	School level management (ISCED 0-6)
+MANAG_HI	Higher level management (ISCED 0-6)
+ADM_SCH	School level administrative personnel (ISCED 0-6)
+ADM_HI	Higher level administrative personnel (ISCED 0-6)
+OPER	Maintenance and operations personal
+ERASMUS_IN	Incoming Erasmmus staff
+ERASMUS_OUT	Outgoing Erasmus staff

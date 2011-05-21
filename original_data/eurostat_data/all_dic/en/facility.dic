@@ -1,0 +1,15 @@
+HBEDS	Available beds in hospitals (HP.1)
+HBEDS_ACUTE	Curative care beds in hospitals (HP.1)
+HBEDS_PSY	Psychiatric care beds in hospitals (HP.1)
+HBEDS_LT	Long-term care beds (excluding psychiatric) in hospitals (HP.1)
+HBEDS_OTH	Other beds in hospitals (HP.1)
+NRCBEDS	Available beds in HP.2 Nursing and residential care facilities
+NCBEDS	Available beds in HP.2.1 Nursing care facilities
+CT_SCAN	Computed Tomography Scanners
+MRI	Magnetic Resonance Imaging Units
+GAMMA	Gamma cameras
+DSA	Angiography units
+LSI	Lithotriptors
+PET_SCAN	PET scanners
+RAD	Radiation therapy equipment
+MAMMO	Mammographs

@@ -1,0 +1,38 @@
+TOTAL	All procedures covered by ICD-9-CM
+CM01-05	Operations on the nervous system
+CM06_07	Operations on the endocrine system
+CM08-16	Operations on the eye
+CM131-137	Cataract surgery
+CM18-20	Operations on the ear
+CM21-29	Operations on the nose, mouth and pharynx
+CM30-34	Operations on the respiratory system
+CM35-39	Operations on the cardiovascular system
+CM36	Operations on vessels of heart
+CM361	Bypass anastomosis for heart revascularization
+CM3721-3723	Cardiac catherisation
+CM3995	Haemodialysis
+CM40_41	Operations on the hemic and lymphatic system
+CM42-54	Operations on the digestive system
+CM47	Operations on appendix
+CM512	Cholecystectomy
+CM530-533	Inguinal and femoral hernia
+CM55-59	Operations on the urinary system
+CM5731-5733	Cystoscopy with or without biopsy
+CM60-64	Operations on the male genital organs
+CM602-606	Total prostatectomy
+CM65-71	Operations on the female genital organs
+CM683-687_689	Hysterectomy
+CM72-75	Obstetrical procedures
+CM740-744_7499	Caesarean sections
+CM76_84	Operations on the musculoskeletal system
+CM767_790-793	Reduction of fracture
+CM8026_806	Knee surgery (arthroscopy and excision of semilunar cartilage)
+CM8151	Total hip replacement
+CM85_86	Operations on the integumentary system
+CM854	Mastectomy
+CM87-99	Miscellaneous diagnostic and therapeutic procedures
+CM_CAT	Computerised axial tomography (87.03, 87.41, 87.71, 88.01, 88.38)
+CM884_885	Contrast arteriography and angiocardiography
+CM887	Diagnostic ultrasound
+CM939	Respiratory therapy
+CM00	Procedures and interventions not elsewhere classified

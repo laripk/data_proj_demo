@@ -1,0 +1,112 @@
+/* ---------------------------------- */
+/* OLDER VERSION "toggleBox"					*/
+/* ---------------------------------- */
+
+span.toggleBox{z-index:255;width:160px;height:100px;position:absolute;left:0;top:0;background-image: url('/wel/images/togglebox.gif');}
+span.visible{visibility: visible;}
+span.invisible{visibility: hidden;}
+
+/* ---------------------------------- */
+/* FRAME															*/
+/* ---------------------------------- */
+
+.iFrameRequest{width:0;height:0;border:0;position:absolute;left:0;top:0;}
+
+/* ---------------------------------- */
+/* POPUP															*/
+/* ---------------------------------- */
+
+.euPopup
+{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:999;
+	width:160px;
+}
+.euPopup div
+{
+	float:left;
+	padding:1px;
+	background-color:#fff;
+}
+.euPopup div div
+{
+	float:left;
+	padding:5px;
+	border:1px solid #369;
+	background:url(/wel/images/ws/background.gif) #fff left top repeat-x;
+}
+.euPopup div div a
+{
+	float:left;
+	margin:1px;
+	text-decoration:none;
+}
+
+/* ---------------------------------- */
+/* POPUP ERROR												*/
+/* ---------------------------------- */
+
+.euPopupError
+{
+	position:absolute;
+	left:0;top:0;
+	z-index:999;
+	width:160px;
+}
+.euPopupError div
+{
+	float:left;
+	padding:1px;
+	background-color:#fff;
+	color:#036;
+}
+.euPopupError div div
+{
+	float:left;
+	padding:5px;
+	border:2px solid #a00;
+}
+.euPopupError div div a
+{
+	float:left;
+	margin:1px;
+	text-decoration:none;
+}
+
+/* ---------------------------------- */
+/* POPUP ::: WEB SERVICE LINK					*/
+/* ---------------------------------- */
+
+.euWsHide,.euModalWindowButton,.euWsLoading,.euWsWarning,.euWsRetry
+{
+	padding:0 7px;
+	margin:0 1px;
+	border:0;
+	cursor:pointer;
+	text-decoration:none;
+	vertical-align:middle;
+	background:url(/wel/images/languages/lang_zz.gif) transparent center center no-repeat;
+}
+.euWsHide span,.euModalWindowButton span,.euWsLoading span,.euWsWarning span,.euWsRetry span
+{
+	display:none;
+}
+.euWsHide b,.euModalWindowButton b,.euWsWarning b,.euWsRetry b
+{
+	visibility:hidden;
+}
+.euWsLoading
+{
+	background:url(/wel/images/loading.gif) transparent left top no-repeat;
+}
+.euWsWarning
+{
+	background:url(/wel/images/warning.gif) transparent left center no-repeat;
+}
+.euWsRetry
+{
+	background:url(/wel/images/refresh2.gif) transparent left center no-repeat;
+}
+
