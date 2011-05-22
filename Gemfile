@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
 gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
-gem 'rake', '0.8.7'
+gem 'rake', '0.8.7' # there's a bug in 0.9.0
 
 # for the data
 gem 'yaml_db', '0.2.1'
@@ -17,5 +17,10 @@ end
 group :test do 
 	gem 'rspec', '2.6.0'
 	gem 'webrat', '0.7.3'
+end
+
+group :development, :test do
+	gem 'watchr', '0.7'
+	gem 'database_cleaner', '0.6.7'
 end
 

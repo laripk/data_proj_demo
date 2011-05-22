@@ -11,5 +11,8 @@
 #
 
 class Region < ActiveRecord::Base
-  attr_accessor :code, :description # for now, because I'm importing
+	attr_accessible :code, :description # for now, because I'm importing
+
+	validates :code,        :presence => true
+	validates :description, :presence => true
 end
