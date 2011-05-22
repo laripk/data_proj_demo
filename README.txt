@@ -74,8 +74,13 @@ First, I need a table defining all the regions.
 This data is coming from original_data/eurostat_data/all_dic/en/geo.dic
 (copied to data/geo.dic)
 This file has two columns, the code and the description.
+
 I noticed that the descriptions of the regions within countries do not
 repeat the name of the country, so I am going to add that in during the 
 import process.
+
+This proved to have an unexpected challenge of dealing with international
+character encodings and getting them to transfer properly.
+
 
 
