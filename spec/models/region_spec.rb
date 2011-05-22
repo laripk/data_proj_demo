@@ -33,7 +33,25 @@ describe Region do
 			no_descrip_region = Region.new(@attr.merge(:description => ""))
 			no_descrip_region.should_not be_valid
 		end
+		
+		it "should require a unique code" do
+		  expect do
+		    Region.create!(@attr)
+		    Region.create!(@attr.merge(:description => "second time"))
+		  end.to raise_error(ActiveRecord::RecordNotUnique)
+	  end
 	
 	end
 	
+	describe "population associations" do
+	  
+	  before(:each) do
+	    @region = Factory(:region)
+    end
+    
+    it "should have a populations attribute" do
+      @region.should respond_to(:populations)
+    end
+    
+  end
 end

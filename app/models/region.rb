@@ -15,4 +15,6 @@ class Region < ActiveRecord::Base
 
 	validates :code,        :presence => true
 	validates :description, :presence => true
+	
+	has_many :populations
 end

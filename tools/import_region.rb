@@ -34,15 +34,20 @@ class RegionImporter
 
 end
 
+=begin
 # HOW I USED THIS
-# $ rails console
-# > require "#{RAILS_ROOT}/tools/import_region"
-# > tbl = RegionImporter.grab_region_data
+$ rake db:reset
+rails console
+
+> require "#{RAILS_ROOT}/tools/import_region"
+tbl = RegionImporter.grab_region_data
 
 
 # EXTRACTED THE COUNTRY CODE ROWS
-# > ccc = tbl.select{|row| row[:code].length==2 }
-# > cct = CSV::Table.new(ccc)
-# > File.open("#{RAILS_ROOT}/data/geo_cc.dic", 'w', :encoding => "ASCII-8BIT") {|f| f << cct.to_csv }
+> ccc = tbl.select{|row| row[:code].length==2 }
+cct = CSV::Table.new(ccc)
+File.open("#{RAILS_ROOT}/data/geo_cc.dic", 'w', :encoding => "ASCII-8BIT") {|f| f << cct.to_csv }
+
 # AND THEN I EDITED THE COUNTRY CODE FILE TO ONLY HAVE COUNTRY CODES
 
+=end

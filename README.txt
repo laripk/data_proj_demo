@@ -83,4 +83,8 @@ This proved to have an unexpected challenge of dealing with international
 character encodings and getting them to transfer properly.
 
 
+Second, how about some population data? Let's import 
+"Total average population, by NUTS 2 regions" (tgs00001).
+
+
 

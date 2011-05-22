@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110521232440) do
+ActiveRecord::Schema.define(:version => 20110522163302) do
+
+  create_table "populations", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "year"
+    t.integer  "total_pop_thous"
+    t.boolean  "total_pop_estimated"
+    t.boolean  "total_pop_break_in_series"
+    t.boolean  "total_pop_see_explan"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "populations", ["region_id", "year"], :name => "by_region_year", :unique => true
 
   create_table "regions", :force => true do |t|
     t.string   "code",        :limit => 20
