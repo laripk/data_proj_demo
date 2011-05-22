@@ -1,11 +1,9 @@
 code,description
-EU,"European Union (EU6-1972, EU9-1980, EU10-1985, EU12-1994, EU15-2004, EU25-2006, EU27)"
-EA,"Euro area (EA11-2000, EA12-2006, EA13-2007, EA15-2008, EA16-2010, EA17)"
 BE,Belgium
 BG,Bulgaria
 CZ,Czech Republic
 DK,Denmark
-DE,Germany (including  former GDR from 1991)
+DE,Germany
 EE,Estonia
 IE,Ireland
 GR,Greece
@@ -35,7 +33,7 @@ NO,Norway
 CH,Switzerland
 ME,Montenegro
 HR,Croatia
-MK,"Former Yugoslav Republic of Macedonia, the"
+MK,Macedonia
 TR,Turkey
 AL,Albania
 AD,Andorra
@@ -46,7 +44,7 @@ GI,Gibraltar (UK)
 GG,Guernsey
 IM,Isle of Man
 JE,Jersey
-XK,Kosovo (under United Nations Security Council Resolution 1244/99)
+XK,Kosovo
 MD,Moldova
 MC,Monaco
 RU,Russia
@@ -170,7 +168,7 @@ KG,Kyrgyzstan
 TJ,Tajikistan
 TM,Turkmenistan
 UZ,Uzbekistan
-CN,China (including Hong Kong)
+CN,China
 HK,Hong Kong
 MO,Macao
 JP,Japan
@@ -178,7 +176,7 @@ MN,Mongolia
 KP,North Korea
 KR,South Korea
 TW,Taiwan
-TB,Tibet (under the administration of China)
+TB,Tibet
 AF,Afghanistan
 BD,Bangladesh
 BT,Bhutan
@@ -249,5 +247,3 @@ AQ,Antarctica
 BV,Bouvet Island (NO)
 GS,South Georgia and the South Sandwich Islands (UK)
 TF,French Southern Territories (FR)
-FZ,Franc Zone
-IF,Investment Facility 

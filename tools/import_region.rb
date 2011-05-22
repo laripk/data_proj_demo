@@ -1,17 +1,23 @@
 require 'csv'
 
 class RegionImporter
+	
+	def self.load_countries
+		countrytbl = CSV.table("#{RAILS_ROOT}/data/geo_cc.dic")
+		countries = {}
+		countrytbl.each do |row| 
+			countries[row[:code]] = row[:description].to_s.
+			                           force_encoding("ISO-8859-1").encode("UTF-8")
+		end
+		countries		
+	end
 
 	def self.grab_region_data
+		countries = load_countries
+		
 		inputfile = "#{RAILS_ROOT}/data/geo.dic"
 		rdata = CSV.table(inputfile, :col_sep => "\t") # encoding is ASCII-8BIT
 
-		# fixed = rdata.to_csv.force_encoding("UTF-8")
-		# fixedfile = "#{RAILS_ROOT}/data/geo_fixed.dic"
-		# File.open(fixedfile, 'w', :encoding => "UTF-8") {|f| f << fixed }
-		# 
-		# rdata = CSV.table(fixedfile)
-		    
 		rdata.by_row!.each do |row|
 			c = row[:code].to_s.force_encoding("ISO-8859-1")
 			# puts c
@@ -19,6 +25,9 @@ class RegionImporter
 			d = row[:description].to_s.force_encoding("ISO-8859-1")
 			# puts d
 			d = d.encode("UTF-8")
+			if c.length > 2 && countries.key?(c[0..1])
+				d = "#{countries[c[0..1]]} - #{d}"
+			end
 			Region.create!(:code => c, :description => d)
 		end
 	end
@@ -31,9 +40,9 @@ end
 # > tbl = RegionImporter.grab_region_data
 
 
-# EXTRACT THE COUNTRY CODE ROWS
+# EXTRACTED THE COUNTRY CODE ROWS
 # > ccc = tbl.select{|row| row[:code].length==2 }
 # > cct = CSV::Table.new(ccc)
 # > File.open("#{RAILS_ROOT}/data/geo_cc.dic", 'w', :encoding => "ASCII-8BIT") {|f| f << cct.to_csv }
-# AND HERE I EDITED THE COUNTRY CODE FILE TO ONLY HAVE COUNTRY CODES
+# AND THEN I EDITED THE COUNTRY CODE FILE TO ONLY HAVE COUNTRY CODES
 
