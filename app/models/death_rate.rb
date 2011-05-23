@@ -1,22 +1,24 @@
 # == Schema Information
-# Schema version: 20110523065257
+# Schema version: 20110523070901
 #
 # Table name: death_rates
 #
-#  id                        :integer         not null, primary key
-#  region_id                 :integer
-#  start_year                :integer
-#  end_year                  :integer
-#  all_causes                :float
-#  all_causes_provisional    :boolean
-#  created_at                :datetime
-#  updated_at                :datetime
-#  cancer                    :float
-#  cancer_provisional        :boolean
-#  heart_disease             :float
-#  heart_disease_provisional :boolean
-#  all_accidents             :float
-#  all_accidents_provisional :boolean
+#  id                              :integer         not null, primary key
+#  region_id                       :integer
+#  start_year                      :integer
+#  end_year                        :integer
+#  all_causes                      :float
+#  all_causes_provisional          :boolean
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#  cancer                          :float
+#  cancer_provisional              :boolean
+#  heart_disease                   :float
+#  heart_disease_provisional       :boolean
+#  all_accidents                   :float
+#  all_accidents_provisional       :boolean
+#  transport_accidents             :float
+#  transport_accidents_provisional :boolean
 #
 
 class DeathRate < ActiveRecord::Base
@@ -24,7 +26,8 @@ class DeathRate < ActiveRecord::Base
                   :all_causes, :all_causes_provisional,
                   :cancer, :cancer_provisional,
                   :heart_disease, :heart_disease_provisional,
-                  :all_accidents, :all_accidents_provisional
+                  :all_accidents, :all_accidents_provisional,
+                  :transport_accidents, :transport_accidents_provisional
   
   belongs_to :region
   
@@ -38,7 +41,8 @@ class DeathRate < ActiveRecord::Base
       :all_causes => "Deaths due to all causes of death in a region.",
       :cancer => "Deaths due to cancer (all death caused by a malignant neoplasm) in a region.",
       :heart_disease => "Death due to ischemic heart diseases (all death caused by reduced blood supply to the heart - most are due to 'heart attack') in a region.",
-      :all_accidents => "Death due to all kinds of accidents (transport, drowning, fire, ...) in a region."
+      :all_accidents => "Death due to all kinds of accidents (transport, drowning, fire, ...) in a region.",
+      :transport_accidents => "Death due to transport accidents (all kinds of transport (road: car, pedestrian, cyclist, ..; water; air; ...)) in a region."
     }
   end
 end
