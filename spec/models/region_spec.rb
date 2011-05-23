@@ -77,6 +77,20 @@ describe Region do
     
     end
   
+  	describe "household income" do
+	  
+      it "should have a household_incomes attribute" do
+        @region.should respond_to(:household_incomes)
+      end
+    
+      it "should have a working household_incomes attribute" do
+        expect do
+          @region.household_incomes.should be_empty
+        end.to_not raise_error
+      end
+    
+    end
+  
   end #assoc
   
 end

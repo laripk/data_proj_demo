@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523070901) do
+ActiveRecord::Schema.define(:version => 20110523072303) do
 
   create_table "death_rates", :force => true do |t|
     t.integer  "region_id"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(:version => 20110523070901) do
   end
 
   add_index "death_rates", ["region_id", "start_year"], :name => "deaths_by_region_year", :unique => true
+
+  create_table "household_incomes", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "year"
+    t.float    "primary"
+    t.boolean  "primary_estimated"
+    t.boolean  "primary_break_in_series"
+    t.boolean  "primary_see_explan"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "household_incomes", ["region_id", "year"], :name => "income_by_region_year", :unique => true
 
   create_table "populations", :force => true do |t|
     t.integer  "region_id"

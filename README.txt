@@ -92,12 +92,12 @@ All causes of death, by NUTS 2 regions (tgs00057)
 Death due to cancer, by NUTS 2 regions (tgs00058)
 Death due to ischaemic heart diseases, by NUTS 2 regions (tgs00059)
 Death due to accidents, by NUTS 2 regions (tgs00060)
-Death due to transport accidents, by NUTS 2 regions (tgs00061) ***
------not done yet-----
+Death due to transport accidents, by NUTS 2 regions (tgs00061)
 
 Fourth, household income sounds good.
-Disposable income of private households, by NUTS 2 regions (tgs00026)
-Primary income of private households, by NUTS 2 regions (tgs00036)
+Primary income of private households, by NUTS 2 regions (tgs00036) ***
+
+OK, that should be enough to get us started.
 
 
 

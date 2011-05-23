@@ -19,7 +19,7 @@ class TotalPopulationImporter
                                 :description => "#{row[0]} Region")
       end
       row[1..-1].each_with_index do |cell, i|
-        year = header[i].to_i
+        year = header[i+1].to_i
         value, flags = cell.split(/ /, -1)
         # puts "'#{value}', '#{flags}'"
 
