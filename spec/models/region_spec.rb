@@ -43,15 +43,40 @@ describe Region do
 	
 	end
 	
-	describe "population associations" do
-	  
+	describe "associations with" do
+	
 	  before(:each) do
 	    @region = Factory(:region)
     end
+  
+  	describe "population" do
+	  
+      it "should have a populations attribute" do
+        @region.should respond_to(:populations)
+      end
+      
+      it "should have a working populations attribute" do
+        expect do
+          @region.populations.should be_empty
+        end.to_not raise_error
+      end
     
-    it "should have a populations attribute" do
-      @region.should respond_to(:populations)
     end
+	
+  	describe "death rate" do
+	  
+      it "should have a death_rates attribute" do
+        @region.should respond_to(:death_rates)
+      end
     
-  end
+      it "should have a working death_rates attribute" do
+        expect do
+          @region.death_rates.should be_empty
+        end.to_not raise_error
+      end
+    
+    end
+  
+  end #assoc
+  
 end

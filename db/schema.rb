@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523023139) do
+ActiveRecord::Schema.define(:version => 20110523032743) do
+
+  create_table "death_rates", :force => true do |t|
+    t.integer  "region_id"
+    t.integer  "start_year"
+    t.integer  "end_year"
+    t.float    "all_causes"
+    t.boolean  "all_causes_provisional"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "death_rates", ["region_id", "start_year"], :name => "deaths_by_region_year", :unique => true
 
   create_table "populations", :force => true do |t|
     t.integer  "region_id"
@@ -24,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20110523023139) do
     t.float    "pop_density_perkm2"
   end
 
-  add_index "populations", ["region_id", "year"], :name => "by_region_year", :unique => true
+  add_index "populations", ["region_id", "year"], :name => "pop_by_region_year", :unique => true
 
   create_table "regions", :force => true do |t|
     t.string   "code",        :limit => 20

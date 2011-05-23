@@ -12,7 +12,7 @@ describe Population do
               :pop_density_perkm2 => 282.3 }
   end
   
-  it "should create a new isntance given valid attributes" do
+  it "should create a new instance given valid attributes" do
     @region.populations.create!(@attr)
   end
   
@@ -36,7 +36,6 @@ describe Population do
 		    pop2 = @region.populations.create(@attr)
 		  end.to raise_error(ActiveRecord::RecordNotUnique)
 	  end
-		
     
   end #region assoc
   
@@ -47,9 +46,10 @@ describe Population do
     end
     
     it "should require a year" do
-      @region.populations.build(@attr.merge(:year => nil)).should_not be_valid
+      @region.populations.
+        build(@attr.merge(:year => nil)).should_not be_valid
     end
     
-  end
+  end #valid
 
 end

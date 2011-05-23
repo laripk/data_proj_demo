@@ -17,4 +17,5 @@ class Region < ActiveRecord::Base
 	validates :description, :presence => true
 	
 	has_many :populations
+	has_many :death_rates
 end

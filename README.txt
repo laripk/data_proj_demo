@@ -87,7 +87,17 @@ Second, how about some population data? Let's import
 "Total average population, by NUTS 2 regions" (tgs00001).
 And "Population density, by NUTS 2 regions" (tgs00024).
 
+Third, how about some death rates?
+All causes of death, by NUTS 2 regions (tgs00057) ***
+-----not done yet-----
+Death due to cancer, by NUTS 2 regions (tgs00058)
+Death due to ischaemic heart diseases, by NUTS 2 regions (tgs00059)
+Death due to accidents, by NUTS 2 regions (tgs00060)
+Death due to transport accidents, by NUTS 2 regions (tgs00061)
 
+Fourth, household income sounds good.
+Disposable income of private households, by NUTS 2 regions (tgs00026)
+Primary income of private households, by NUTS 2 regions (tgs00036)
 
 
 

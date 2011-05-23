@@ -18,8 +18,7 @@ class TotalPopulationImporter
         region = Region.create!(:code => row[0],
                                 :description => "#{row[0]} Region")
       end
-      (1..(row.length-1)).each do |i|
-        cell = row[i]
+      row[1..-1].each_with_index do |cell, i|
         year = header[i].to_i
         value, flags = cell.split(/ /, -1)
         # puts "'#{value}', '#{flags}'"
@@ -40,7 +39,7 @@ class TotalPopulationImporter
             :total_pop_estimated => estimated, 
             :total_pop_break_in_series => break_in_series, 
             :total_pop_see_explan => see_explan)
-      end #column loop
+      end #cell loop
     end #row loop
     Population.count
   end

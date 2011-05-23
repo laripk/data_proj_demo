@@ -10,12 +10,13 @@ class CreatePopulations < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :populations, [:region_id, :year], :unique => true, 
-        :name => 'by_region_year'
+    add_index :populations, [:region_id, :year], 
+              :unique => true, 
+              :name => 'pop_by_region_year'
   end
 
   def self.down
-    remove_index :populations, :name => :by_region_year
+    remove_index :populations, :name => :pop_by_region_year
     drop_table :populations
   end
 end

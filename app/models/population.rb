@@ -24,4 +24,12 @@ class Population < ActiveRecord::Base
   
   validates :region_id, :presence => true
   validates :year,      :presence => true
+  
+  def self.describe
+    descriptions = {
+      :populations => "Population information by year.",
+      :total_pop_thous => "Total population resident in a region. Average of population at the beginning of the year and population at the end of the year. (1,000 inhabitants)",
+      :pop_density_perkm2 => "Total population divided by the surface area. (inhabitants per square km) For calculation of population density, the land area concept (excluding inland water bodies like lakes or rivers) should be used wherever available. In several countries the total area, including area of lakes and rivers, is used because it is the only concept for which data are available."
+    }
+  end
 end
