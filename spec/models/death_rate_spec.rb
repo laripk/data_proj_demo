@@ -7,7 +7,9 @@ describe DeathRate do
     @attr = { :start_year => 2000,
               :end_year => 2002,
               :all_causes => 56.8,
-              :all_causes_provisional => false }
+              :all_causes_provisional => false,
+              :cancer => 12.8,
+              :cancer_provisional => false }
   end
   
   it "should create a new instance given valid attributes" do

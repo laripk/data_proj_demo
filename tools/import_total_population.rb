@@ -34,7 +34,7 @@ class TotalPopulationImporter
         break_in_series = flags.include?('b')
         see_explan = flags.include?('i')
 
-        region.populations.create(:year => year,
+        region.populations.create!(:year => year,
             :total_pop_thous => value, 
             :total_pop_estimated => estimated, 
             :total_pop_break_in_series => break_in_series, 

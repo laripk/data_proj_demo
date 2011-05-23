@@ -25,7 +25,7 @@ class PopulationDensityImporter
 
         if value == ':'
           value = nil
-        elsif /\d+/ =~ value
+        elsif /^[0-9\.]+$/ =~ value
           value = value.to_f
         else
           raise "unexpected value found in #{row[0]}, #{i}"
@@ -39,7 +39,7 @@ class PopulationDensityImporter
           pop.pop_density_perkm2 = value
           pop.save
         else
-          region.populations.create(:year => year,
+          region.populations.create!(:year => year,
                                     :pop_density_perkm2 => value)
         end
       end #cell loop
