@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523061027) do
+ActiveRecord::Schema.define(:version => 20110523065257) do
 
   create_table "death_rates", :force => true do |t|
     t.integer  "region_id"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20110523061027) do
     t.boolean  "cancer_provisional"
     t.float    "heart_disease"
     t.boolean  "heart_disease_provisional"
+    t.float    "all_accidents"
+    t.boolean  "all_accidents_provisional"
   end
 
   add_index "death_rates", ["region_id", "start_year"], :name => "deaths_by_region_year", :unique => true
