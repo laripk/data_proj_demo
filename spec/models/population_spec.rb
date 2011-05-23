@@ -8,7 +8,8 @@ describe Population do
               :total_pop_thous => 986, 
               :total_pop_estimated => false, 
               :total_pop_break_in_series => false, 
-              :total_pop_see_explan => false }
+              :total_pop_see_explan => false,
+              :pop_density_perkm2 => 282.3 }
   end
   
   it "should create a new isntance given valid attributes" do

@@ -10,5 +10,6 @@ Factory.define :population do |pop|
   pop.total_pop_estimated     false
   pop.total_pop_break_in_data false
   pop.total_pop_see_explan    false
+  pop.pop_density_perkm2      389.2
   pop.association             :region
 end

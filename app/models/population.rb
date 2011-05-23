@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110522163302
+# Schema version: 20110523023139
 #
 # Table name: populations
 #
@@ -12,11 +12,13 @@
 #  total_pop_see_explan      :boolean
 #  created_at                :datetime
 #  updated_at                :datetime
+#  pop_density_perkm2        :float
 #
 
 class Population < ActiveRecord::Base
   attr_accessible :year, :total_pop_thous, :total_pop_estimated, 
-                  :total_pop_break_in_series, :total_pop_see_explan
+                  :total_pop_break_in_series, :total_pop_see_explan,
+                  :pop_density_perkm2
   
   belongs_to :region
   
