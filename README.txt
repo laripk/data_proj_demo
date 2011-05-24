@@ -100,4 +100,7 @@ Primary income of private households, by NUTS 2 regions (tgs00036) ***
 OK, that should be enough to get us started.
 
 
+---------------------
+Step 3: Web Interface
+
 

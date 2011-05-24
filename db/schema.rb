@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523072303) do
+ActiveRecord::Schema.define(:version => 20110524133157) do
+
+  create_table "countries", :force => true do |t|
+    t.string   "code",        :limit => 2
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "countries", ["code"], :name => "index_countries_on_code", :unique => true
 
   create_table "death_rates", :force => true do |t|
     t.integer  "region_id"
@@ -64,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20110523072303) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "country_id"
   end
 
   add_index "regions", ["code"], :name => "index_regions_on_code", :unique => true

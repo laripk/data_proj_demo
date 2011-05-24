@@ -11,9 +11,16 @@ describe Region do
 	
 	describe "creation and validation" do
 	
-		it "should create a new instance given valid attributes" do
+		it "should create a new solo instance given valid attributes" do
 			Region.create!(@attr)
 		end
+		
+		it "should create a new country-child instance given valid attributes" do
+		  country = Factory(:country)
+		  region = country.regions.create!(@attr)
+			region.code.should == @attr[:code]
+			region.description.should == @attr[:description]
+	  end
 		
 		it "should save the data" do
 			Region.create!(@attr)
@@ -42,6 +49,24 @@ describe Region do
 	  end
 	
 	end
+	
+	describe "country associations" do
+	  
+	  before(:each) do
+	    @country = Factory(:country)
+	    @region = @country.regions.create!(@attr)
+    end
+    
+    it "should have a country attribute" do
+      @region.should respond_to(:country)
+    end
+    
+    it "should have the right associated country" do
+      @region.country_id.should == @country.id
+      @region.country.should == @country
+    end
+	  
+  end
 	
 	describe "associations with" do
 	
