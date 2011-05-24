@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Country do
   
   before(:each) do
-    @attr ={
+    @attr = {
       :code => "EX",
       :description => "Example Country"
     }

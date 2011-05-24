@@ -1,0 +1,107 @@
+designing the web interface
+---------------------------
+
+need to somehow display available fields, probably their ranges & modifiers, a place to enter filter criteria, and a place to accumulate the choices so far.
+and, of course, to display the resulting set: dimensions & csv link, or html table.
+
+
+
+think mvc:
+
+model is: queries, built of query-parts, and yielding query-results 
+filters may or may not be a separate concept (subset?) from query-parts
+
+query-parts:
+	data-items
+		primary-household-income
+		total-population
+		population-density
+		death-rate-all-causes
+		death-rate-cancer
+		death-rate-heart-disease
+		death-rate-all-accidents
+		death-rate-transport-accidents
+		regions
+			by country
+	time-periods
+		all years/time periods for region
+		by year/time period and region
+	filters
+		relative to a constant
+			eg, >= 300, < 1000
+		single country
+
+	field                            time-range-type           model
+	primary-household-income         year                      HouseholdIncome.primary
+	total-population                 year
+	population-density               year
+	death-rate-all-causes            three-years(overlapping)
+	death-rate-cancer                three-years(overlapping)
+	death-rate-heart-disease         three-years(overlapping)
+	death-rate-all-accidents         three-years(overlapping)
+	death-rate-transport-accidents   three-years(overlapping)
+	regions                          not-applicable
+
+FieldInfoList
+	has_many :field_info
+	FieldInfo
+		:name
+		:description
+		:model_klass
+		:model_field
+		:time_range_type
+		
+
+
+
+matching yearly data against time-period (death-rate) data:
+	>>match a year to any time range it's in?
+
+example queries:
+	- all death-rates for regions with a population-density < 100 or > 7500
+		all years for regions where pop-dens matches filter at some time? 
+			- save this option for later
+		or only region-year pairs where pop-dens matches filter?
+	- primary-household-income vs death-rates: all-causes, cancer, & heart-disease
+		no filter here, just want everything (for these fields)
+		well, maybe an inner join
+			maybe not, isn't that what n/a values are for?
+	- everything for Germany & United Kingdom
+		don't have to worry about year-matching for the selection
+			but maybe I do for the presentation
+
+
+select r.code, p.year, p.total_pop_thous, h.[primary], d.start_year, d.end_year, d.all_causes, d.cancer, d.heart_disease
+from regions r
+   inner join populations p on r.id=p.region_id
+   inner join household_incomes h on r.id=h.region_id and p.year=h.year
+   inner join death_rates d on r.id=d.region_id and p.year between d.start_year and d.end_year
+
+
+
+I think maybe I should add a log of user (ip address), time, and actions 
+	- later, built in log is probably fine
+
+
+home page should be main query-building page with a big description up top
+	or maybe home should be the about page with big button to go to the query builder
+	so frequent builders don't have to see the about verbiage all the time
+	or maybe not, have it all on one page so they can get a quick judgement right away (unless it's slow...)
+
+
+
+
+select r.code, p.year, p.total_pop_thous, p.pop_density_perkm2
+from regions r inner join populations p on r.id=p.region_id
+
+select min(total_pop_thous) as min_total_pop, max(total_pop_thous) as max_total_pop, min(pop_density_perkm2) as min_pop_density, max(pop_density_perkm2) as max_pop_density
+from  populations
+=> 26, 12636, 2.0, 9405.7
+
+select min(h.primary) as min_primary, max(h.primary) as max_primary
+from  household_incomes h
+
+-- hunh, this query hoses sqlite db browser
+
+
+

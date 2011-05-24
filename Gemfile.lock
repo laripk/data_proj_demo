@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/benchmark-solutions/rails_sql_views.git
+  revision: e8c0cdadfefd948277da0f977d8448254157772e
+  specs:
+    rails_sql_views (0.8.0.3.benchmark)
+      activerecord
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -114,6 +121,7 @@ DEPENDENCIES
   factory_girl_rails (= 1.0.1)
   heroku (= 2.1.4)
   rails (= 3.0.7)
+  rails_sql_views (= 0.8.0.3.benchmark)!
   rake (= 0.8.7)
   rspec (= 2.6.0)
   rspec-rails (= 2.6.0)
