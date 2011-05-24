@@ -1,6 +1,0 @@
-TOTAL	Total
-DEG1	Densely-populated area (at least 500 inhabitants/Km²)
-DEG2	Intermediate urbanized area (between 100 and 499 inhabitants/Km²)
-DEG3	Sparsely populated area (less than 100 inhabitants/Km²)
-UNK	Unknown
-NRESP	No answer
