@@ -17,4 +17,8 @@ class Country < ActiveRecord::Base
 	validates :description, :presence => true
 	
   has_many :regions
+  
+  def countries_used
+    warn "not implemented"
+  end
 end

@@ -14,13 +14,77 @@ metaphorical "research subjects" because the data is freely
 available and there are a number of different types of data
 available for each region.
 
+
 -----------------------------------
 Step 1: Choose & Download Some Data
 
 I browsed the eurostat regional data available and picked the following
 items to download because I considered them interesting and potentially 
-relatable:
+relatable: (list of downloaded data moved to end of document under 
+heading "data sources").
 
+
+
+-----------------------
+Step 2: Import the Data
+
+Or at least some of it. To make sure I have time to write all the 
+basic functionality of this application, I will only import a very 
+minimal amount of data at this time. If I have time later I will 
+come back and import additional files.
+
+First, I need a table defining all the regions. 
+This data is coming from original_data/eurostat_data/all_dic/en/geo.dic
+(copied to data/geo.dic)
+This file has two columns, the code and the description.
+
+I noticed that the descriptions of the regions within countries do not
+repeat the name of the country, so I am going to add that in during the 
+import process.
+
+This proved to have an unexpected challenge of dealing with international
+character encodings and getting them to transfer properly.
+
+
+Second, how about some population data? Let's import 
+"Total average population, by NUTS 2 regions" (tgs00001).
+And "Population density, by NUTS 2 regions" (tgs00024).
+
+Third, how about some death rates?
+All causes of death, by NUTS 2 regions (tgs00057)
+Death due to cancer, by NUTS 2 regions (tgs00058)
+Death due to ischaemic heart diseases, by NUTS 2 regions (tgs00059)
+Death due to accidents, by NUTS 2 regions (tgs00060)
+Death due to transport accidents, by NUTS 2 regions (tgs00061)
+
+Fourth, household income sounds good.
+Primary income of private households, by NUTS 2 regions (tgs00036)
+
+OK, that should be enough to get us started.
+
+
+---------------------
+Step 3: Web Interface
+
+Created welcome page and stub for Help page.
+
+Creating querying interface.
+
+
+
+-----------------------
+TODO:
+Create scheduling interface (lets user create a schedule for a query, 
+but since this is a demo won't actually run the schedules.) 
+
+
+Re-do imports with TDD & import remaining data (that will fit in db)
+
+Create permissions-based filtering system
+
+
+
+-----------------
 data sources
 	eurostat data
 		http://epp.eurostat.ec.europa.eu/portal/page/portal/region_cities/regional_statistics/data/main_tables
@@ -60,47 +124,4 @@ data sources
 		eurostat dictionaries
 			all dictionaries
 				http://epp.eurostat.ec.europa.eu/NavTree_prod/everybody/BulkDownloadListing?sort=1&file=dic%2Fall_dic.zip
-
-
------------------------
-Step 2: Import the Data
-
-Or at least some of it. To make sure I have time to write all the 
-basic functionality of this application, I will only import a very 
-minimal amount of data at this time. If I have time later I will 
-come back and import additional files.
-
-First, I need a table defining all the regions. 
-This data is coming from original_data/eurostat_data/all_dic/en/geo.dic
-(copied to data/geo.dic)
-This file has two columns, the code and the description.
-
-I noticed that the descriptions of the regions within countries do not
-repeat the name of the country, so I am going to add that in during the 
-import process.
-
-This proved to have an unexpected challenge of dealing with international
-character encodings and getting them to transfer properly.
-
-
-Second, how about some population data? Let's import 
-"Total average population, by NUTS 2 regions" (tgs00001).
-And "Population density, by NUTS 2 regions" (tgs00024).
-
-Third, how about some death rates?
-All causes of death, by NUTS 2 regions (tgs00057)
-Death due to cancer, by NUTS 2 regions (tgs00058)
-Death due to ischaemic heart diseases, by NUTS 2 regions (tgs00059)
-Death due to accidents, by NUTS 2 regions (tgs00060)
-Death due to transport accidents, by NUTS 2 regions (tgs00061)
-
-Fourth, household income sounds good.
-Primary income of private households, by NUTS 2 regions (tgs00036) ***
-
-OK, that should be enough to get us started.
-
-
----------------------
-Step 3: Web Interface
-
 

@@ -21,4 +21,8 @@ class Region < ActiveRecord::Base
 	has_many   :populations
 	has_many   :death_rates
 	has_many   :household_incomes
+	
+	def regions_used
+	  warn "not implemented"
+  end
 end

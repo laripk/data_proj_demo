@@ -2,7 +2,6 @@ DataProjDemo::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/help',    :to => 'pages#help'
 
-  get "field_infos/index"
   
   root :to => 'pages#home'
 
