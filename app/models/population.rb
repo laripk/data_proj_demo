@@ -1,15 +1,15 @@
 # == Schema Information
-# Schema version: 20110523023139
+# Schema version: 20110528005942
 #
 # Table name: populations
 #
-#  id                        :integer         not null, primary key
-#  region_id                 :integer
-#  year                      :integer
-#  total_pop_thous           :integer
-#  total_pop_estimated       :boolean
-#  total_pop_break_in_series :boolean
-#  total_pop_see_explan      :boolean
+#  id                        :integer(4)      not null, primary key
+#  region_id                 :integer(4)
+#  year                      :integer(4)
+#  total_pop_thous           :integer(4)
+#  total_pop_estimated       :boolean(1)
+#  total_pop_break_in_series :boolean(1)
+#  total_pop_see_explan      :boolean(1)
 #  created_at                :datetime
 #  updated_at                :datetime
 #  pop_density_perkm2        :float

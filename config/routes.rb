@@ -1,4 +1,14 @@
 DataProjDemo::Application.routes.draw do
+  # get "queries/index"
+  # get "queries/new"
+  # get "queries/create"
+  # get "queries/show"
+  # get "queries/edit"
+  # get "queries/update"
+  # get "queries/destroy"
+
+  resources :queries
+
   match '/contact', :to => 'pages#contact'
   match '/help',    :to => 'pages#help'
 

@@ -59,12 +59,19 @@ FieldInfoList
 
 
 query:
+	storage: name & yaml-blob ?
+	
+	returns:
+		fieldinfo list - non-empty
+	filters:
+		filter = fieldinfo-restriction pair
+		filter list - may be empty
+	
+	
 	at least one fieldinfo
 	zero or more filters
-	if a field is filtered on, it gets returned as well
-	region codes always get returned (can't display them for filtering yet anyway)
+	
 
-filters only make sense when attached to a fieldinfo
 
 
 fieldinfo list in view should be multi-select
@@ -73,6 +80,7 @@ fieldinfo list in view should be multi-select
 		but the main action (selecting for query) should be dead easy
 	ok, but what about attaching the filters?
 		second set of unused/used?
+	type-to-filter/select list boxes....
 
 
 back up, make it simpler:

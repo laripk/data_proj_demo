@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/laripk/rails_sql_views.git
+  revision: 90329db26a68f12a7d235462d64861e3e040b538
+  specs:
+    rails_sql_views (0.8.0.1.laripk)
+      activerecord
+      mysql2 (= 0.2.7)
+      rails (= 3.0.7)
+      rake (= 0.8.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -53,11 +63,20 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_search (1.0.5)
+      actionpack (~> 3.0.2)
+      activerecord (~> 3.0.2)
+      activesupport (~> 3.0.2)
+      arel (~> 2.0.2)
+    meta_where (1.0.4)
+      activerecord (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      arel (~> 2.0.7)
     mime-types (1.16)
     mysql2 (0.2.7)
     nokogiri (1.4.4)
     polyglot (0.3.1)
-    rack (1.2.2)
+    rack (1.2.3)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
@@ -82,7 +101,7 @@ GEM
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
       rspec-mocks (~> 2.6.0)
-    rspec-core (2.6.2)
+    rspec-core (2.6.3)
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.6.0)
@@ -123,8 +142,11 @@ DEPENDENCIES
   database_cleaner (= 0.6.7)
   factory_girl_rails (= 1.0.1)
   heroku (= 2.1.4)
+  meta_search (= 1.0.5)
+  meta_where (= 1.0.4)
   mysql2 (= 0.2.7)
   rails (= 3.0.7)
+  rails_sql_views!
   rake (= 0.8.7)
   rspec (= 2.6.0)
   rspec-rails (= 2.6.0)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526154150) do
+ActiveRecord::Schema.define(:version => 20110601234511) do
 
   create_table "countries", :force => true do |t|
     t.string   "code",        :limit => 2
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(:version => 20110526154150) do
   add_index "populations", ["region_id", "year"], :name => "pop_by_region_year", :unique => true
   add_index "populations", ["region_id"], :name => "index_populations_on_region_id"
 
+  create_table "queries", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_active"
+    t.text     "query_def"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "queries", ["name"], :name => "index_queries_on_name", :unique => true
+
   create_table "regions", :force => true do |t|
     t.string   "code",        :limit => 20
     t.string   "description"
@@ -80,5 +90,13 @@ ActiveRecord::Schema.define(:version => 20110526154150) do
   end
 
   add_index "regions", ["code"], :name => "index_regions_on_code", :unique => true
+
+  create_view "v_yearlies", "select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) union select `h`.`region_id` AS `region_id`,`h`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`household_incomes` `h` left join `populations` `p` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`p`.`id`) union select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` left join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`h`.`id`)", :force => true do |v|
+    v.column :region_id
+    v.column :year
+    v.column :total_population
+    v.column :population_density
+    v.column :primary_income
+  end
 
 end
