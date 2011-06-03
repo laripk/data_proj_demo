@@ -1,4 +1,4 @@
-class CreateYearliesView < ActiveRecord::Migration
+class CreateVwaYearlies < ActiveRecord::Migration
   def self.up
     yearlies_sql = <<-SQL
       select p.region_id, p.year, 
@@ -21,16 +21,16 @@ class CreateYearliesView < ActiveRecord::Migration
       	on p.region_id=h.region_id and p.year=h.year
       where h.id is null
     SQL
-    create_view :v_yearlies, yearlies_sql do |t|
-      t.column :region_id
-      t.column :year
-      t.column :total_population
-      t.column :population_density
-      t.column :primary_income
+    create_view :vwa_yearlies, yearlies_sql do |v|
+      v.column :region_id
+      v.column :year
+      v.column :total_population
+      v.column :population_density
+      v.column :primary_income
     end
   end
 
   def self.down
-    drop_view :v_yearlies
+    drop_view :vwa_yearlies
   end
 end

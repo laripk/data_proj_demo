@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601234511) do
+ActiveRecord::Schema.define(:version => 20110602111108) do
 
   create_table "countries", :force => true do |t|
     t.string   "code",        :limit => 2
@@ -91,12 +91,55 @@ ActiveRecord::Schema.define(:version => 20110601234511) do
 
   add_index "regions", ["code"], :name => "index_regions_on_code", :unique => true
 
-  create_view "v_yearlies", "select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) union select `h`.`region_id` AS `region_id`,`h`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`household_incomes` `h` left join `populations` `p` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`p`.`id`) union select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` left join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`h`.`id`)", :force => true do |v|
+  create_view "vwa_regions", "select `r`.`id` AS `region_id`,`r`.`code` AS `region_code`,`r`.`description` AS `region_description`,`c`.`id` AS `country_id`,`c`.`code` AS `country_code`,`c`.`description` AS `country_description` from (`regions` `r` left join `countries` `c` on((`r`.`country_id` = `c`.`id`)))", :force => true do |v|
+    v.column :region_id
+    v.column :region_code
+    v.column :region_description
+    v.column :country_id
+    v.column :country_code
+    v.column :country_description
+  end
+
+  create_view "vwa_yearlies", "select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) union select `h`.`region_id` AS `region_id`,`h`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`household_incomes` `h` left join `populations` `p` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`p`.`id`) union select `p`.`region_id` AS `region_id`,`p`.`year` AS `year`,`p`.`total_pop_thous` AS `total_population`,`p`.`pop_density_perkm2` AS `population_density`,`h`.`primary` AS `primary_income` from (`populations` `p` left join `household_incomes` `h` on(((`p`.`region_id` = `h`.`region_id`) and (`p`.`year` = `h`.`year`)))) where isnull(`h`.`id`)", :force => true do |v|
     v.column :region_id
     v.column :year
     v.column :total_population
     v.column :population_density
     v.column :primary_income
+  end
+
+  create_view "vwb_combineds", "select `y`.`region_id` AS `region_id`,`y`.`year` AS `year`,`y`.`total_population` AS `total_population`,`y`.`population_density` AS `population_density`,`y`.`primary_income` AS `primary_income`,`d`.`start_year` AS `start_year_death_rate`,`d`.`end_year` AS `end_year_death_rate`,`d`.`all_causes` AS `all_causes_death_rate`,`d`.`cancer` AS `cancer_death_rate`,`d`.`heart_disease` AS `heart_disease_death_rate`,`d`.`all_accidents` AS `all_accidents_death_rate`,`d`.`transport_accidents` AS `transport_accidents_death_rate` from (`vwa_yearlies` `y` join `death_rates` `d` on(((`y`.`region_id` = `d`.`region_id`) and (`y`.`year` between `d`.`start_year` and `d`.`end_year`)))) union select `y`.`region_id` AS `region_id`,`y`.`year` AS `year`,`y`.`total_population` AS `total_population`,`y`.`population_density` AS `population_density`,`y`.`primary_income` AS `primary_income`,`d`.`start_year` AS `start_year`,`d`.`end_year` AS `end_year`,`d`.`all_causes` AS `all_causes`,`d`.`cancer` AS `cancer`,`d`.`heart_disease` AS `heart_disease`,`d`.`all_accidents` AS `all_accidents`,`d`.`transport_accidents` AS `transport_accidents` from (`vwa_yearlies` `y` left join `death_rates` `d` on(((`y`.`region_id` = `d`.`region_id`) and (`y`.`year` between `d`.`start_year` and `d`.`end_year`)))) where isnull(`d`.`id`) union select `d`.`region_id` AS `region_id`,`y`.`year` AS `year`,`y`.`total_population` AS `total_population`,`y`.`population_density` AS `population_density`,`y`.`primary_income` AS `primary_income`,`d`.`start_year` AS `start_year`,`d`.`end_year` AS `end_year`,`d`.`all_causes` AS `all_causes`,`d`.`cancer` AS `cancer`,`d`.`heart_disease` AS `heart_disease`,`d`.`all_accidents` AS `all_accidents`,`d`.`transport_accidents` AS `transport_accidents` from (`death_rates` `d` left join `vwa_yearlies` `y` on(((`y`.`region_id` = `d`.`region_id`) and (`y`.`year` between `d`.`start_year` and `d`.`end_year`)))) where isnull(`y`.`year`)", :force => true do |v|
+    v.column :region_id
+    v.column :year
+    v.column :total_population
+    v.column :population_density
+    v.column :primary_income
+    v.column :start_year_death_rate
+    v.column :end_year_death_rate
+    v.column :all_causes_death_rate
+    v.column :cancer_death_rate
+    v.column :heart_disease_death_rate
+    v.column :all_accidents_death_rate
+    v.column :transport_accidents_death_rate
+  end
+
+  create_view "vwc_all_combineds", "select `m`.`region_id` AS `region_id`,`m`.`year` AS `year`,`m`.`total_population` AS `total_population`,`m`.`population_density` AS `population_density`,`m`.`primary_income` AS `primary_income`,`m`.`start_year_death_rate` AS `start_year_death_rate`,`m`.`end_year_death_rate` AS `end_year_death_rate`,`m`.`all_causes_death_rate` AS `all_causes_death_rate`,`m`.`cancer_death_rate` AS `cancer_death_rate`,`m`.`heart_disease_death_rate` AS `heart_disease_death_rate`,`m`.`all_accidents_death_rate` AS `all_accidents_death_rate`,`m`.`transport_accidents_death_rate` AS `transport_accidents_death_rate`,`r`.`region_code` AS `region_code`,`r`.`region_description` AS `region_description`,`r`.`country_code` AS `country_code`,`r`.`country_description` AS `country_description` from (`vwb_combineds` `m` left join `vwa_regions` `r` on((`r`.`region_id` = `m`.`region_id`)))", :force => true do |v|
+    v.column :region_id
+    v.column :year
+    v.column :total_population
+    v.column :population_density
+    v.column :primary_income
+    v.column :start_year_death_rate
+    v.column :end_year_death_rate
+    v.column :all_causes_death_rate
+    v.column :cancer_death_rate
+    v.column :heart_disease_death_rate
+    v.column :all_accidents_death_rate
+    v.column :transport_accidents_death_rate
+    v.column :region_code
+    v.column :region_description
+    v.column :country_code
+    v.column :country_description
   end
 
 end
