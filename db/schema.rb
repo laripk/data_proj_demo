@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602111108) do
+ActiveRecord::Schema.define(:version => 20110603123608) do
 
   create_table "countries", :force => true do |t|
     t.string   "code",        :limit => 2
@@ -73,13 +73,12 @@ ActiveRecord::Schema.define(:version => 20110602111108) do
 
   create_table "queries", :force => true do |t|
     t.string   "name"
+    t.text     "selected_fields"
+    t.text     "selected_filters"
     t.boolean  "is_active"
-    t.text     "query_def"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "queries", ["name"], :name => "index_queries_on_name", :unique => true
 
   create_table "regions", :force => true do |t|
     t.string   "code",        :limit => 20

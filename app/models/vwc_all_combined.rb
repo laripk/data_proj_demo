@@ -24,6 +24,11 @@
 class VwcAllCombined < ActiveRecord::Base
   before_save    { false }
   before_destroy { false }
+  
+  # info for meta_search
+  belongs_to :query
+  attr_accessor :query_id
+  attr_unsearchable :region_id
 
   def self.field_info
     # :field_name => "Field description"

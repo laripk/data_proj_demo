@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.0.8.rc4'
 gem 'rake', '0.8.7' # there's an incompatibility in 0.9.0 with rails 3.0.7
 
 # for the data

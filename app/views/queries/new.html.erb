@@ -1,2 +1,9 @@
-<h1>Queries#new</h1>
-<p>Find me in app/views/queries/new.html.erb</p>
+<h1>New Query</h1>
+
+<%= form_for @query do |f| %>
+	<%= render 'fields', :f => f %>
+	<div class='actions'>
+		<%= f.submit "Create" %>
+	</div>
+<% end %>
+<%= @results %>
