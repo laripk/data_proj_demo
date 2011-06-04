@@ -18,6 +18,7 @@ class Query < ActiveRecord::Base
   # for meta_search
   has_many :vwc_all_combineds
   accepts_nested_attributes_for :vwc_all_combineds
+  # attr_accessible :vwc_all_combined_attributes
   
   # serialize :selected_fields, :selected_filters # not sure if this is right
   

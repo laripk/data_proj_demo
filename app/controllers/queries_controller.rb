@@ -19,8 +19,9 @@ class QueriesController < ApplicationController
     @title = "New Query"
     @query = Query.new
     @query.selected_fields = [:region_code]
-    @filters = VwcAllCombined.search()
-    @results = @filters.select("distinct #{@query.selected_fields.join(', ')}").limit(10)
+    # @query.vwc_all_combined = MetaSearch::Searches::VwcAllCombined.new(VwcAllCombined)
+    # VwcAllCombined.search()
+    # @results = @filters.select("distinct #{@query.selected_fields.join(', ')}").limit(10)
   end
 
   def create
