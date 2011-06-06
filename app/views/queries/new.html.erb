@@ -1,147 +1,142 @@
 <h1>New Query</h1>
 
-<%= form_tag queries_path do |f| -%>
+<%= form_tag queries_path do %>
 	<!-- %= render 'fields', :f => f % -->
-	<%  %>
-	<%= render 'shared/error_messages', :object => @query %>
-	<div id='query_name' class='field'>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-		<br />
-	</div>
-	<div id='choose_selected_fields'>
-		<%= f.label :selected_fields %>
-		<ul>
-			<!-- %= f.select :selected_fields, VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize, k] }, :multiple => true % -->
-			<% f.checks :selected_fields, 
-				VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize, k] } do |check| %>
-				<li><%= check.box %> <%= check.label %></li>
-			<% end %>
-		</ul>
-		<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
-		<p class='note'>Region descriptions contain a lot of accented characters. Country description may contain some as well. The character encoding is UTF-8.</p>
-	</div>
-	<div id='filters'>
-		Hey, filters! 
-		<% f.fields_for :vwc_all_combined_attributes do |ff| %>
-		<%= ff.inspect %>
-			<div id='filter_region_code' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:region_code] %></p>
-				<%= ff.label :region_code_starts_with %>
-				<%= ff.text_field :region_code_starts_with %>
-				<br />
-			</div>
-			<div id='filter_region_description' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:region_description] %></p>
-				<%= ff.label :region_description_contains %>
-				<%= ff.text_field :region_description_contains %>
-				<br />
-			</div>
-			<div id='filter_country_code'>
-				<p class='description'><%= VwcAllCombined.field_info[:country_code] %></p>
-				<%= ff.label :country_code_in %>
-				<%= ff.collection_select :country_code_in, Country.all, :code, :code, {}, { :multiple => true } %>
-				<br />
-			</div>
-			<div id='filter_country_description' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:country_description] %></p>
-				<%= ff.label :country_description_contains %>
-				<%= ff.text_field :country_description_contains %>
-				<br />
-			</div>
-			<div id='filter_year' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:year] %></p>
-				<%= ff.label :year_gte %> <%= ff.text_field :year_gte %>
-				<br />
-				<%= ff.label :year_lte %> <%= ff.text_field :year_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_total_population' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:total_population] %></p>
-				<%= ff.label :total_population_gte %> <%= ff.text_field :total_population_gte %>
-				<br />
-				<%= ff.label :total_population_lte %> <%= ff.text_field :total_population_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_population_density' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:population_density] %></p>
-				<%= ff.label :population_density_gte %> <%= ff.text_field :population_density_gte %>
-				<br />
-				<%= ff.label :population_density_lte %> <%= ff.text_field :population_density_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_primary_income' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:primary_income] %></p>
-				<%= ff.label :primary_income_gte %> <%= ff.text_field :primary_income_gte %>
-				<br />
-				<%= ff.label :primary_income_lte %> <%= ff.text_field :primary_income_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_start_year_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:start_year_death_rate] %></p>
-				<%= ff.label :start_year_death_rate_gte %> <%= ff.text_field :start_year_death_rate_gte %>
-				<br />
-				<%= ff.label :start_year_death_rate_lte %> <%= ff.text_field :start_year_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_end_year_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:end_year_death_rate] %></p>
-				<%= ff.label :end_year_death_rate_gte %> <%= ff.text_field :end_year_death_rate_gte %>
-				<br />
-				<%= ff.label :end_year_death_rate_lte %> <%= ff.text_field :end_year_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_all_causes_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:all_causes_death_rate] %></p>
-				<%= ff.label :all_causes_death_rate_gte %> <%= ff.text_field :all_causes_death_rate_gte %>
-				<br />
-				<%= ff.label :all_causes_death_rate_lte %> <%= ff.text_field :all_causes_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_cancer_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:cancer_death_rate] %></p>
-				<%= ff.label :cancer_death_rate_gte %> <%= ff.text_field :cancer_death_rate_gte %>
-				<br />
-				<%= ff.label :cancer_death_rate_lte %> <%= ff.text_field :cancer_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_heart_disease_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:heart_disease_death_rate] %></p>
-				<%= ff.label :heart_disease_death_rate_gte %> <%= ff.text_field :heart_disease_death_rate_gte %>
-				<br />
-				<%= ff.label :heart_disease_death_rate_lte %> <%= ff.text_field :heart_disease_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_all_accidents_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:all_accidents_death_rate] %></p>
-				<%= ff.label :all_accidents_death_rate_gte %> <%= ff.text_field :all_accidents_death_rate_gte %>
-				<br />
-				<%= ff.label :all_accidents_death_rate_lte %> <%= ff.text_field :all_accidents_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-			<div id='filter_transport_accidents_death_rate' class='field'>
-				<p class='description'><%= VwcAllCombined.field_info[:transport_accidents_death_rate] %></p>
-				<%= ff.label :transport_accidents_death_rate_gte %> <%= ff.text_field :transport_accidents_death_rate_gte %>
-				<br />
-				<%= ff.label :transport_accidents_death_rate_lte %> <%= ff.text_field :transport_accidents_death_rate_lte %>
-				<br />
-				<span class='note'>min/max</span>
-			</div>
-		<% end %>
-	</div>
+	<%= field_set_tag nil, :id => :query do %>
+		<!-- %= render 'shared/error_messages', :object => @query % -->
+		<div id='query_name' class='field'>
+			<%= label_tag :name %>
+			<%= text_field_tag :name %>
+			<br />
+		</div>
+		<div id='choose_selected_fields'>
+			<%= label_tag :selected_fields %>
+			<ul>
+				<%= select_tag :selected_fields, 
+				               options_for_select(@field_info.map{|k,v| [k.to_s.humanize, k] }), 
+				               :multiple => true, :size => 12 %>
+			</ul>
+			<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
+			<p class='note'>Region descriptions contain a lot of accented characters. Country description may contain some as well. The character encoding is UTF-8.</p>
+		</div>
+	<% end %>
+	<%= field_set_tag nil, :id => :search do %>
+		<div id='filter_region_code' class='field'>
+			<p class='description'><%= @field_info[:region_code] %></p>
+			<%= label_tag :region_code_starts_with %>
+			<%= text_field_tag :region_code_starts_with %>
+			<br />
+		</div>
+		<div id='filter_region_description' class='field'>
+			<p class='description'><%= @field_info[:region_description] %></p>
+			<%= label_tag :region_description_contains %>
+			<%= text_field_tag :region_description_contains %>
+			<br />
+		</div>
+		<div id='filter_country_code'>
+			<p class='description'><%= @field_info[:country_code] %></p>
+			<%= label_tag :country_code_in %>
+			<%= select_tag :country_code_in, options_for_select(Country.all.map{|row| [row.code, row.code] }), :multiple => true  %>
+			<br />
+		</div>
+		<div id='filter_country_description' class='field'>
+			<p class='description'><%= @field_info[:country_description] %></p>
+			<%= label_tag :country_description_contains %>
+			<%= text_field_tag :country_description_contains %>
+			<br />
+		</div>
+		<div id='filter_year' class='field'>
+			<p class='description'><%= @field_info[:year] %></p>
+			<%= label_tag :year_gte %> <%= text_field_tag :year_gte %>
+			<br />
+			<%= label_tag :year_lte %> <%= text_field_tag :year_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_total_population' class='field'>
+			<p class='description'><%= @field_info[:total_population] %></p>
+			<%= label_tag :total_population_gte %> <%= text_field_tag :total_population_gte %>
+			<br />
+			<%= label_tag :total_population_lte %> <%= text_field_tag :total_population_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_population_density' class='field'>
+			<p class='description'><%= @field_info[:population_density] %></p>
+			<%= label_tag :population_density_gte %> <%= text_field_tag :population_density_gte %>
+			<br />
+			<%= label_tag :population_density_lte %> <%= text_field_tag :population_density_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_primary_income' class='field'>
+			<p class='description'><%= @field_info[:primary_income] %></p>
+			<%= label_tag :primary_income_gte %> <%= text_field_tag :primary_income_gte %>
+			<br />
+			<%= label_tag :primary_income_lte %> <%= text_field_tag :primary_income_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_start_year_death_rate' class='field'>
+			<p class='description'><%= @field_info[:start_year_death_rate] %></p>
+			<%= label_tag :start_year_death_rate_gte %> <%= text_field_tag :start_year_death_rate_gte %>
+			<br />
+			<%= label_tag :start_year_death_rate_lte %> <%= text_field_tag :start_year_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_end_year_death_rate' class='field'>
+			<p class='description'><%= @field_info[:end_year_death_rate] %></p>
+			<%= label_tag :end_year_death_rate_gte %> <%= text_field_tag :end_year_death_rate_gte %>
+			<br />
+			<%= label_tag :end_year_death_rate_lte %> <%= text_field_tag :end_year_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_all_causes_death_rate' class='field'>
+			<p class='description'><%= @field_info[:all_causes_death_rate] %></p>
+			<%= label_tag :all_causes_death_rate_gte %> <%= text_field_tag :all_causes_death_rate_gte %>
+			<br />
+			<%= label_tag :all_causes_death_rate_lte %> <%= text_field_tag :all_causes_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_cancer_death_rate' class='field'>
+			<p class='description'><%= @field_info[:cancer_death_rate] %></p>
+			<%= label_tag :cancer_death_rate_gte %> <%= text_field_tag :cancer_death_rate_gte %>
+			<br />
+			<%= label_tag :cancer_death_rate_lte %> <%= text_field_tag :cancer_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_heart_disease_death_rate' class='field'>
+			<p class='description'><%= @field_info[:heart_disease_death_rate] %></p>
+			<%= label_tag :heart_disease_death_rate_gte %> <%= text_field_tag :heart_disease_death_rate_gte %>
+			<br />
+			<%= label_tag :heart_disease_death_rate_lte %> <%= text_field_tag :heart_disease_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_all_accidents_death_rate' class='field'>
+			<p class='description'><%= @field_info[:all_accidents_death_rate] %></p>
+			<%= label_tag :all_accidents_death_rate_gte %> <%= text_field_tag :all_accidents_death_rate_gte %>
+			<br />
+			<%= label_tag :all_accidents_death_rate_lte %> <%= text_field_tag :all_accidents_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+		<div id='filter_transport_accidents_death_rate' class='field'>
+			<p class='description'><%= @field_info[:transport_accidents_death_rate] %></p>
+			<%= label_tag :transport_accidents_death_rate_gte %> <%= text_field_tag :transport_accidents_death_rate_gte %>
+			<br />
+			<%= label_tag :transport_accidents_death_rate_lte %> <%= text_field_tag :transport_accidents_death_rate_lte %>
+			<br />
+			<span class='note'>min/max</span>
+		</div>
+	<% end %>
 
 	<div class='actions'>
-		<%= f.submit "Create Query" %>
+		<%= submit_tag "Create Query" %>
 	</div>
-<% end -%>
+<% end %>
 <!-- %= @results % -->
