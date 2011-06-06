@@ -1,0 +1,5 @@
+<% fieldname ||= :nil %>
+<%= field_set_tag "Filter on #{fieldname.to_s.humanize}", :id => "filter_#{fieldname.to_s}", :class => 'field' do %>
+	<dl class='description'><dt><%= fieldname.to_s.humanize %></dt><dd><%= @field_info[fieldname] %></dd></dl>
+	<%= yield %>
+<% end %>

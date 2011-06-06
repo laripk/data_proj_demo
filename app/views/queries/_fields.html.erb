@@ -1,0 +1,132 @@
+<%= field_set_tag nil, :id => :query do %>
+	<!-- %= render 'shared/error_messages', :object => @query % -->
+	<%= field_set_tag nil, :id => :query_name, :class => 'field bigger' do %>
+		<%= label_tag 'query[name]', 'Query Name' %>
+		<%= text_field_tag 'query[name]', @query.name, :size => 50, :maxlength => @query.column_for_attribute(:name).limit %>
+		<br />
+	<% end %>
+	<%= field_set_tag nil, :id => :choose_selected_fields, :class => 'field' do %>
+		<%= label_tag 'query[selected_fields]', 'Select Fields' %>
+		<ul>
+			<%= select_tag 'query[selected_fields]', 
+			               options_for_select(@field_info.map{|k,v| [k.to_s.humanize, k] }, @query.selected_fields), 
+			               :multiple => true, :size => 12 %>
+		</ul>
+		<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
+		<p class='note'>Region descriptions contain a lot of accented characters. Country description may contain some as well. The character encoding is UTF-8.</p>
+	<% end %>
+<% end %>
+<%= field_set_tag nil, :id => :filter do %>
+	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :region_code}) do %>
+		<%= label_tag 'filter[region_code_starts_with]', :region_code_starts_with.to_s.humanize %>
+		<%= text_field_tag 'filter[region_code_starts_with]', @filter[:region_code_starts_with] %>
+		<br />
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_region_description, :class => 'field' do %>
+		<dl class='description'><dt><%= :region_description.to_s.humanize %></dt><dd><%= @field_info[:region_description] %></dd></dl>
+		<%= label_tag :region_description_contains %>
+		<%= text_field_tag :region_description_contains %>
+		<br />
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_country_code, :class => 'field' do %>
+		<dl class='description'><dt><%= :country_code.to_s.humanize %></dt><dd><%= @field_info[:country_code] %></dd></dl>
+		<%= label_tag :country_code_in %>
+		<%= select_tag :country_code_in, options_for_select(Country.all.map{|row| [row.code, row.code] }), :multiple => true  %>
+		<br />
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_country_description, :class => 'field' do %>
+		<dl class='description'><dt><%= :country_description.to_s.humanize %></dt><dd><%= @field_info[:country_description] %></dd></dl>
+		<%= label_tag :country_description_contains %>
+		<%= text_field_tag :country_description_contains %>
+		<br />
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_year, :class => 'field' do %>
+		<dl class='description'><dt><%= :year.to_s.humanize %></dt><dd><%= @field_info[:year] %></dd></dl>
+		<%= label_tag :year_gte %> <%= text_field_tag :year_gte %>
+		<br />
+		<%= label_tag :year_lte %> <%= text_field_tag :year_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_total_population, :class => 'field' do %>
+		<dl class='description'><dt><%= :total_population.to_s.humanize %></dt><dd><%= @field_info[:total_population] %></dd></dl>
+		<%= label_tag :total_population_gte %> <%= text_field_tag :total_population_gte %>
+		<br />
+		<%= label_tag :total_population_lte %> <%= text_field_tag :total_population_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_population_density, :class => 'field' do %>
+		<dl class='description'><dt><%= :population_density.to_s.humanize %></dt><dd><%= @field_info[:population_density] %></dd></dl>
+		<%= label_tag :population_density_gte %> <%= text_field_tag :population_density_gte %>
+		<br />
+		<%= label_tag :population_density_lte %> <%= text_field_tag :population_density_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_primary_income, :class => 'field' do %>
+		<dl class='description'><dt><%= :primary_income.to_s.humanize %></dt><dd><%= @field_info[:primary_income] %></dd></dl>
+		<%= label_tag :primary_income_gte %> <%= text_field_tag :primary_income_gte %>
+		<br />
+		<%= label_tag :primary_income_lte %> <%= text_field_tag :primary_income_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_start_year_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :start_year_death_rate.to_s.humanize %></dt><dd><%= @field_info[:start_year_death_rate] %></dd></dl>
+		<%= label_tag :start_year_death_rate_gte %> <%= text_field_tag :start_year_death_rate_gte %>
+		<br />
+		<%= label_tag :start_year_death_rate_lte %> <%= text_field_tag :start_year_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_end_year_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :end_year_death_rate.to_s.humanize %></dt><dd><%= @field_info[:end_year_death_rate] %></dd></dl>
+		<%= label_tag :end_year_death_rate_gte %> <%= text_field_tag :end_year_death_rate_gte %>
+		<br />
+		<%= label_tag :end_year_death_rate_lte %> <%= text_field_tag :end_year_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_all_causes_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :all_causes_death_rate.to_s.humanize %></dt><dd><%= @field_info[:all_causes_death_rate] %></dd></dl>
+		<%= label_tag :all_causes_death_rate_gte %> <%= text_field_tag :all_causes_death_rate_gte %>
+		<br />
+		<%= label_tag :all_causes_death_rate_lte %> <%= text_field_tag :all_causes_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_cancer_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :cancer_death_rate.to_s.humanize %></dt><dd><%= @field_info[:cancer_death_rate] %></dd></dl>
+		<%= label_tag :cancer_death_rate_gte %> <%= text_field_tag :cancer_death_rate_gte %>
+		<br />
+		<%= label_tag :cancer_death_rate_lte %> <%= text_field_tag :cancer_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_heart_disease_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :heart_disease_death_rate.to_s.humanize %></dt><dd><%= @field_info[:heart_disease_death_rate] %></dd></dl>
+		<%= label_tag :heart_disease_death_rate_gte %> <%= text_field_tag :heart_disease_death_rate_gte %>
+		<br />
+		<%= label_tag :heart_disease_death_rate_lte %> <%= text_field_tag :heart_disease_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_all_accidents_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :all_accidents_death_rate.to_s.humanize %></dt><dd><%= @field_info[:all_accidents_death_rate] %></dd></dl>
+		<%= label_tag :all_accidents_death_rate_gte %> <%= text_field_tag :all_accidents_death_rate_gte %>
+		<br />
+		<%= label_tag :all_accidents_death_rate_lte %> <%= text_field_tag :all_accidents_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+	<%= field_set_tag nil, :id => :filter_transport_accidents_death_rate, :class => 'field' do %>
+		<dl class='description'><dt><%= :transport_accidents_death_rate.to_s.humanize %></dt><dd><%= @field_info[:transport_accidents_death_rate] %></dd></dl>
+		<%= label_tag :transport_accidents_death_rate_gte %> <%= text_field_tag :transport_accidents_death_rate_gte %>
+		<br />
+		<%= label_tag :transport_accidents_death_rate_lte %> <%= text_field_tag :transport_accidents_death_rate_lte %>
+		<br />
+		<span class='note'>min/max</span>
+	<% end %>
+<% end %>
+

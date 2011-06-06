@@ -17,16 +17,18 @@ class QueriesController < ApplicationController
   def new
     # display form for creating a new query
     @title = "New Query"
-    # @query = Query.new
-    # @query.selected_fields = [:region_code]
-    # @search = VwcAllCombined.search()
+    @query = Query.new
+    @query.selected_fields = [:region_code]
     @field_info = VwcAllCombined.field_info
+    @filter = {}
+    # @search = VwcAllCombined.search()
     # @query.vwc_all_combined = MetaSearch::Searches::VwcAllCombined.new(VwcAllCombined)
     # @results = @search.select("distinct #{@query.selected_fields.join(', ')}").limit(10)
   end
 
   def create
-    # save a new query
+    @query = Query.new(params[:query])
+    @filter = params[:filter]
   end
 
   def edit

@@ -26,8 +26,8 @@ class Query < ActiveRecord::Base
   validates :is_active,       :presence => true
   validates :selected_fields, :presence => true
   
-  def initialize
-    super
+  def initialize(attributes)
+    super attributes
     if @is_active.nil?
       @is_active = true
     end

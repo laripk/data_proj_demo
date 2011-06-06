@@ -1,2 +1,9 @@
-<h1>Queries#edit</h1>
-<p>Find me in app/views/queries/edit.html.erb</p>
+<h1>Edit Query</h1>
+
+<%= form_tag query_path(@query) do %>
+	<%= render 'fields' %>
+	<div class='actions'>
+		<%= submit_tag "Save Changes" %>
+	</div>
+<% end %>
+<!-- %= @results % -->
