@@ -16,6 +16,8 @@ class Country < ActiveRecord::Base
 	validates :code,        :presence => true
 	validates :description, :presence => true
 	
+	default_scope :order => 'countries.code ASC'
+	
   has_many :regions
   
   def countries_used
