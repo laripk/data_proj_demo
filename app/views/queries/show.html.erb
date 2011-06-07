@@ -1,2 +1,40 @@
-<h1>Queries#show</h1>
-<p>Find me in app/views/queries/show.html.erb</p>
+<h1><%= @title %></h1>
+
+<%= content_tag :div, :id => :query_name, :class => 'fieldset bigger' do %>
+   <span class='label'>Query Name:</span>
+   <span class='value'><%= @query.name %></span>
+<% end %>
+
+<%= content_tag :div, :id => :query_selected_fields, :class => 'fieldset' do %>
+   <span class='label bigger'>Selected Fields</span>
+   <div class=''>
+   <% @query.selected_fields.each do |field| %>
+      <span class='value'><%= field.humanize.titlecase %></span><br />
+   <% end %>
+   </div>
+<% end %>
+
+<%= content_tag :div, :id => :filters, :class => 'fieldset' do %>
+   <span class='label bigger'>Filters</span>
+   <% @filters.each do |key, value| %>
+      <% unless value.blank? %>
+         <%= content_tag :div, :id => key, :class => '' do %>
+            <span class='label'>
+               <%= key.humanize.titlecase.sub(/[GL]te/, {'Gte' => '>=', 'Lte' => '<='}) %>
+            </span>
+            <% if value.is_a?(Array) %>
+               <span class='value'><%= value %></span>
+               <!-- FIXME -->
+            <% else %>
+               <span class='value'><%= value %></span>
+            <% end %>
+         <% end %>
+      <% end %>
+   <% end %>
+<% end %>
+<br /><hr />
+<%= hidden_field_tag :results_mode, params[:results_mode] %>
+Viewing Results: 
+<%= radio_button_tag 'results_mode', 'preview', 'preview'==params[:results_mode] %>Preview
+<%= radio_button_tag 'results_mode', 'full',    'full'==params[:results_mode] %>Full
+

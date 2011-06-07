@@ -13,6 +13,7 @@ module ApplicationHelper
   
   # based on #checks in MetaSearch
   def check_group(object_name, method, choices, value_method, text_method, selected = [], options = {})
+    # concat selected.inspect
     concat hidden_field_tag("#{object_name}[#{method}][]", '', 
                             options.merge(:id => [object_name.to_s, method.to_s].join('_')))
     concat "\n"

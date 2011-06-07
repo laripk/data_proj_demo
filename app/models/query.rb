@@ -7,7 +7,7 @@
 #  name             :string(255)
 #  selected_fields  :text
 #  selected_filters :text
-#  is_active        :boolean(1)
+#  is_active        :boolean(1)      default(TRUE)
 #  created_at       :datetime
 #  updated_at       :datetime
 #
@@ -20,17 +20,20 @@ class Query < ActiveRecord::Base
   accepts_nested_attributes_for :vwc_all_combineds
   # attr_accessible :vwc_all_combined_attributes
   
-  # serialize :selected_fields, :selected_filters # not sure if this is right
+  serialize :selected_fields,  Array 
+  serialize :selected_filters, Hash
   
   validates :name,            :presence => true
   validates :is_active,       :presence => true
   validates :selected_fields, :presence => true
   
-  def initialize(attributes=nil)
-    super attributes
-    if @is_active.nil?
-      @is_active = true
-    end
-  end
+  default_scope where(:is_active => true)
+  
+  # def initialize(attributes=nil)
+  #   super attributes
+  #   if @is_active.nil?
+  #     @is_active = true
+  #   end
+  # end
   
 end

@@ -4,7 +4,7 @@ class CreateQueries < ActiveRecord::Migration
       t.string  :name
       t.text    :selected_fields
       t.text    :selected_filters
-      t.boolean :is_active
+      t.boolean :is_active, :default => true
       
       t.timestamps
     end

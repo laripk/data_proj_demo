@@ -1,5 +1,5 @@
 <%= field_set_tag nil, :id => :query do %>
-	<!-- %= render 'shared/error_messages', :object => @query % -->
+	<%= render 'shared/error_messages', :object => @query %>
 	<%= field_set_tag nil, :id => :query_name, :class => 'field bigger' do %>
 		<%= label_tag 'query[name]', 'Query Name' %>
 		<%= text_field_tag 'query[name]', @query.name, :size => 50, :maxlength => @query.column_for_attribute(:name).limit %>
@@ -8,18 +8,20 @@
 	<%= field_set_tag "Select Fields", :id => :choose_selected_fields, :class => 'field' do %>
 		<%= label_tag 'query[selected_fields]', 'Select Fields' %>
 		<div class='checkboxy'>
-			<% check_group :query, :selected_fields, @field_info.map{|k,v| [k.to_s.humanize, k]}, :last, :first, @query.selected_fields %>
+			<% check_group :query, :selected_fields, 
+			      VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize.titlecase, k.to_s]}, :last, :first, @query.selected_fields %>
 		</div>
 		<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
 		<p class='note'>Region descriptions contain a lot of accented characters. The character encoding is UTF-8.</p>
 	<% end %>
 <% end %>
 <%= field_set_tag "Filters", :id => :filter do %>
+   <p class='note'>something intelligent about all choices being ANDed together.</p>
 	<!-- %= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do % -->
 	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
 		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
-			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||={} %>
+			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||=[] %>
 		</div>
 		<br />
 	<% end %>
@@ -27,7 +29,7 @@
 	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
 		<%= label_tag 'filter[region_code_in]', 'Region is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
-			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||={} %>
+			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||=[] %>
 		</div>
 		<br />
 	<% end %>

@@ -6,9 +6,13 @@ gem 'rake', '0.8.7' # there's an incompatibility in 0.9.0 with rails 3.0.7
 # for the data
 gem 'yaml_db', '0.2.1'
 gem 'taps', '0.3.23'   # for sending data to heroku
+
 gem 'meta_where', '1.0.4'
 gem 'meta_search', '1.0.5'
 gem 'rails_sql_views', :git => 'https://github.com/laripk/rails_sql_views.git'
+
+gem 'will_paginate', '3.0.pre2'
+
 
 group :development, :test do
   gem 'sqlite3-ruby', '1.3.3', :require => 'sqlite3'
@@ -16,7 +20,6 @@ group :development, :test do
 	gem 'watchr', '0.7'
 	gem 'database_cleaner', '0.6.7'
 end
-
 
 group :development do 
 	gem 'rspec-rails', '2.6.0'

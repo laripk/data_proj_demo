@@ -1,10 +1,10 @@
 <% fieldname ||= :nil %>
-<%= field_set_tag "Filter on #{fieldname.to_s.humanize}", :id => "filter_#{fieldname.to_s}", :class => 'field' do %>
-	<dl class='description'><dt><%= fieldname.to_s.humanize %></dt><dd><%= @field_info[fieldname] %></dd></dl>
-	<%= label_tag "filter[#{fieldname}_gte]", "#{fieldname.to_s.humanize} Greater than or equal to ( >= )" %>
+<%= field_set_tag "Filter on #{fieldname.to_s.humanize.titlecase}", :id => "filter_#{fieldname.to_s}", :class => 'field' do %>
+	<dl class='description'><dt><%= fieldname.to_s.humanize.titlecase %></dt><dd><%= VwcAllCombined.field_info[fieldname] %></dd></dl>
+	<%= label_tag "filter[#{fieldname}_gte]", "Greater than or equal to ( >= )" %>
 	<%= text_field_tag "filter[#{fieldname}_gte]", @filter["#{fieldname}_gte".to_sym] %>
 	<br />
-	<%= label_tag "filter[#{fieldname}_lte]", "#{fieldname.to_s.humanize} Less than or equal to ( <= )" %>
+	<%= label_tag "filter[#{fieldname}_lte]", "Less than or equal to ( <= )" %>
 	<%= text_field_tag "filter[#{fieldname}_lte]", @filter["#{fieldname}_lte".to_sym] %>
 	<br />
 	<span class='note'>min/max</span>

@@ -132,6 +132,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.pre2)
     yaml_db (0.2.1)
 
 PLATFORMS
@@ -154,4 +155,5 @@ DEPENDENCIES
   taps (= 0.3.23)
   watchr (= 0.7)
   webrat (= 0.7.3)
+  will_paginate (= 3.0.pre2)
   yaml_db (= 0.2.1)
