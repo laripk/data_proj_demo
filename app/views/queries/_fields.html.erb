@@ -8,84 +8,40 @@
 	<%= field_set_tag "Select Fields", :id => :choose_selected_fields, :class => 'field' do %>
 		<%= label_tag 'query[selected_fields]', 'Select Fields' %>
 		<div class='checkboxy'>
-			<%= check_group :query, :selected_fields, @field_info.map{|k,v| [k.to_s.humanize, k]}, @query.selected_fields do |check| %>
-				<%= check.box %><%= check.label %><br />
-			<% end %>
+			<% check_group :query, :selected_fields, @field_info.map{|k,v| [k.to_s.humanize, k]}, :last, :first, @query.selected_fields %>
 		</div>
 		<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
-		<p class='note'>Region descriptions contain a lot of accented characters. Country description may contain some as well. The character encoding is UTF-8.</p>
+		<p class='note'>Region descriptions contain a lot of accented characters. The character encoding is UTF-8.</p>
 	<% end %>
 <% end %>
 <%= field_set_tag "Filters", :id => :filter do %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :region_code}) do %>
-		<%= label_tag 'filter[region_code_starts_with]', :region_code_starts_with.to_s.humanize %>
-		<%= text_field_tag 'filter[region_code_starts_with]', @filter[:region_code_starts_with] %>
-		<br />
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :region_description}) do %>
-		<%= label_tag 'filter[region_description_contains]', :region_description_contains.to_s.humanize %>
-		<%= text_field_tag 'filter[region_description_contains]', @filter[:region_description_contains] %>
-		<br />
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do %>
-		<%= label_tag 'filter[country_code_in]', :country_code_in.to_s.humanize %>
-		<div class='checkboxy'>
-			<%= check_group :filter, :country_code_in, Country.all.map{|row| [row.code, row.code] }, @filter[:country_code_in]||={} do |check| %>
-				<%= check.box %><%= check.label %>
-			<% end %>
+	<!-- %= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do % -->
+	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
+		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
+		<div class='checkboxy' style='height: 20em; overflow: auto'>
+			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||={} %>
 		</div>
 		<br />
 	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :country_description}) do %>
-		<%= label_tag 'filter[country_description_contains]', :country_description_contains.to_s.humanize %>
-		<%= text_field_tag 'filter[country_description_contains]', @filter[:country_description_contains] %>
+	
+	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
+		<%= label_tag 'filter[region_code_in]', 'Region is one of:' %>
+		<div class='checkboxy' style='height: 20em; overflow: auto'>
+			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||={} %>
+		</div>
 		<br />
 	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :year}) do %>
-		<%= label_tag 'filter[year_gte]', :year_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[year_gte]', @filter[:year_gte] %>
-		<br />
-		<%= label_tag 'filter[year_lte]', :year_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[year_lte]', @filter[:year_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :total_population}) do %>
-		<%= label_tag 'filter[total_population_gte]', :total_population_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[total_population_gte]', @filter[:total_population_gte] %>
-		<br />
-		<%= label_tag 'filter[total_population_lte]', :total_population_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[total_population_lte]', @filter[:total_population_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :population_density}) do %>
-		<%= label_tag 'filter[population_density_gte]', :population_density_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[population_density_gte]', @filter[:population_density_gte] %>
-		<br />
-		<%= label_tag 'filter[population_density_lte]', :population_density_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[population_density_lte]', @filter[:population_density_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :primary_income}) do %>
-		<%= label_tag 'filter[primary_income_gte]', :primary_income_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[primary_income_gte]', @filter[:primary_income_gte] %>
-		<br />
-		<%= label_tag 'filter[primary_income_lte]', :primary_income_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[primary_income_lte]', @filter[:primary_income_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :start_year_death_rate}) do %>
-		<%= label_tag 'filter[start_year_death_rate_gte]', :start_year_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[start_year_death_rate_gte]', @filter[:start_year_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[start_year_death_rate_lte]', :start_year_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[start_year_death_rate_lte]', @filter[:start_year_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
+	
+	<%= render 'numeric_field_set_for', :fieldname => :year %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :total_population %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :population_density %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :primary_income %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :start_year_death_rate %>
+
 	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :end_year_death_rate}) do %>
 		<%= label_tag 'filter[end_year_death_rate_gte]', :end_year_death_rate_gte.to_s.humanize %>
 		<%= text_field_tag 'filter[end_year_death_rate_gte]', @filter[:end_year_death_rate_gte] %>

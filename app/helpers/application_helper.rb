@@ -12,30 +12,27 @@ module ApplicationHelper
   
   
   # based on #checks in MetaSearch
-  def check_group(object_name, method, choices = [], selected = [], options = {}, &block)
-    unless choices.first.respond_to?(:first) && choices.first.respond_to?(:last)
-      raise ArgumentError, 'invalid choice array specified'
-    end
-    check_boxes = []
+  def check_group(object_name, method, choices, value_method, text_method, selected = [], options = {})
+    concat hidden_field_tag("#{object_name}[#{method}][]", '', 
+                            options.merge(:id => [object_name.to_s, method.to_s].join('_')))
+    concat "\n"
     choices.each do |choice|
-      text = choice.first
-      value = choice.last
+      text = choice.send(text_method)
+      value = choice.send(value_method)
       check = MetaSearch::Check.new
       check.box = check_box_tag(
         "#{object_name}[#{method}][]",
         value,
         selected.include?(value),
-        options.merge(:id => [object_name, method.to_s, value.to_s.underscore].join('_'))
+        options.merge(:id => [object_name.to_s, method.to_s, value.to_s.underscore].join('_'))
       )
       check.label = label_tag([object_name.to_s, method.to_s, value.to_s.underscore].join('_'),
                                     text)
-      if block_given?
-        yield check
-      else
-        check_boxes << check
-      end
+      concat check.box
+      concat check.label
+      concat tag('br')
+      concat "\n"
     end
-    check_boxes unless block_given?
   end
   
   

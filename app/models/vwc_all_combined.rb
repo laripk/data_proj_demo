@@ -25,6 +25,9 @@ class VwcAllCombined < ActiveRecord::Base
   before_save    { false }
   before_destroy { false }
   
+  scope :regions, select('distinct region_description, region_code').order(:region_description)
+  scope :countries, select('distinct country_description, country_code').order(:country_description)
+  
   # info for meta_search
   belongs_to :query
   attr_accessor :query_id
