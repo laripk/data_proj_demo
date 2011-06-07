@@ -42,59 +42,16 @@
 
 	<%= render 'numeric_field_set_for', :fieldname => :start_year_death_rate %>
 
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :end_year_death_rate}) do %>
-		<%= label_tag 'filter[end_year_death_rate_gte]', :end_year_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[end_year_death_rate_gte]', @filter[:end_year_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[end_year_death_rate_lte]', :end_year_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[end_year_death_rate_lte]', @filter[:end_year_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :all_causes_death_rate}) do %>
-		<%= label_tag 'filter[all_causes_death_rate_gte]', :all_causes_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[all_causes_death_rate_gte]', @filter[:all_causes_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[all_causes_death_rate_lte]', :all_causes_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[all_causes_death_rate_lte]', @filter[:all_causes_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :cancer_death_rate}) do %>
-		<%= label_tag 'filter[cancer_death_rate_gte]', :cancer_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[cancer_death_rate_gte]', @filter[:cancer_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[cancer_death_rate_lte]', :cancer_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[cancer_death_rate_lte]', @filter[:cancer_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :heart_disease_death_rate}) do %>
-		<%= label_tag 'filter[heart_disease_death_rate_gte]', :heart_disease_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[heart_disease_death_rate_gte]', @filter[:heart_disease_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[heart_disease_death_rate_lte]', :heart_disease_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[heart_disease_death_rate_lte]', @filter[:heart_disease_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :all_accidents_death_rate}) do %>
-		<%= label_tag 'filter[all_accidents_death_rate_gte]', :all_accidents_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[all_accidents_death_rate_gte]', @filter[:all_accidents_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[all_accidents_death_rate_lte]', :all_accidents_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[all_accidents_death_rate_lte]', @filter[:all_accidents_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
-	<%= render(:layout => 'field_set_for', :locals => {:fieldname => :transport_accidents_death_rate}) do %>
-		<%= label_tag 'filter[transport_accidents_death_rate_gte]', :transport_accidents_death_rate_gte.to_s.humanize %>
-		<%= text_field_tag 'filter[transport_accidents_death_rate_gte]', @filter[:transport_accidents_death_rate_gte] %>
-		<br />
-		<%= label_tag 'filter[transport_accidents_death_rate_lte]', :transport_accidents_death_rate_lte.to_s.humanize %>
-		<%= text_field_tag 'filter[transport_accidents_death_rate_lte]', @filter[:transport_accidents_death_rate_lte] %>
-		<br />
-		<span class='note'>min/max</span>
-	<% end %>
+	<%= render 'numeric_field_set_for', :fieldname => :end_year_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :all_causes_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :cancer_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :heart_disease_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :all_accidents_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :transport_accidents_death_rate %>
 <% end %>
 
