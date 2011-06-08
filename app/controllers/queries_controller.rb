@@ -11,7 +11,20 @@ class QueriesController < ApplicationController
     @filters = @query.selected_filters
     
     params[:results_mode] ||= 'preview'
-    
+    results = VwcAllCombined.search(@filters).relation.
+                  select("DISTINCT #{@query.selected_fields.join(', ')}")
+    @count = VwcAllCombined.count_me(results.to_sql)
+    case params[:results_mode]
+      when 'full-html'
+        @results = results.paginate :page => params[:page], :per_page => 20
+      when 'full-csv'
+        @results = results
+        respond_to do |format|
+          format.csv
+        end
+      else # includes 'preview' - ie, default to preview mode
+        @results = results.limit(12)
+    end
     
     # include results??
     # no - ask the user; need to ask browse(html) or download(csv) too

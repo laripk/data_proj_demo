@@ -1,11 +1,11 @@
 <h1><%= @title %></h1>
 
-<%= content_tag :div, :id => :query_name, :class => 'fieldset bigger' do %>
+<%= content_tag :div, :id => :query_name, :class => 'boxme bigger' do %>
    <span class='label'>Query Name:</span>
    <span class='value'><%= @query.name %></span>
 <% end %>
 
-<%= content_tag :div, :id => :query_selected_fields, :class => 'fieldset' do %>
+<%= content_tag :div, :id => :query_selected_fields, :class => 'boxme' do %>
    <span class='label bigger'>Selected Fields</span>
    <div class=''>
    <% @query.selected_fields.each do |field| %>
@@ -14,7 +14,7 @@
    </div>
 <% end %>
 
-<%= content_tag :div, :id => :filters, :class => 'fieldset' do %>
+<%= content_tag :div, :id => :filters, :class => 'boxme' do %>
    <span class='label bigger'>Filters</span>
    <% @filters.each do |key, value| %>
       <% unless value.blank? %>
@@ -32,9 +32,39 @@
       <% end %>
    <% end %>
 <% end %>
-<br /><hr />
-<%= hidden_field_tag :results_mode, params[:results_mode] %>
-Viewing Results: 
-<%= radio_button_tag 'results_mode', 'preview', 'preview'==params[:results_mode] %>Preview
-<%= radio_button_tag 'results_mode', 'full',    'full'==params[:results_mode] %>Full
+
+<%= form_tag query_path(@query), :method => :get, :class => 'boxme' do %>
+   <span class='label'>Viewing Results:</span>
+   <%= radio_button_tag 'results_mode', 'preview',   'preview'==params[:results_mode] %>
+   <%= label_tag 'results_mode_preview', 'Preview' %>
+
+   <%= radio_button_tag 'results_mode', 'full-html', 'full-html'==params[:results_mode] %>
+   <%= label_tag 'results_mode_full-html', 'Full - In Browser' %>
+
+   <%= radio_button_tag 'results_mode', 'full-csv',  'full-csv'==params[:results_mode] %>
+   <%= label_tag 'results_mode_full-csv', 'Full - Download CSV' %>
+
+   <%= submit_tag 'View Results' %>
+<% end %>
+<br />
+<div class='boxme'>
+   <span class='label'>Number of records found:</span>
+   <span class='value'><%= number_with_delimiter @count.first.first %></span>
+</div>
+<%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
+<table summary="Results for query">
+   <tr>
+      <% @query.selected_fields.each do |col| %>
+         <th><%= col.humanize.titlecase %></th>
+      <% end %>
+   </tr>
+   <% @results.each do |row| %>
+      <tr>
+         <% @query.selected_fields.each do |col| %>
+            <td><%= row.attributes[col] %></td>
+         <% end %>
+      </tr>
+   <% end %>
+</table>
+<%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
 

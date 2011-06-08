@@ -1,5 +1,5 @@
 .container {
-	width: 710px;
+	width: 910px;
 }
 
 body {
@@ -42,7 +42,7 @@ div.field, div.actions {
 }
 
 #error_explanation {
-	width: 400px;
+	width: 70%;
 	border: 2px solid red;
 	padding: 7px;
 	padding-bottom: 20px;
@@ -127,7 +127,7 @@ nav ul li a:hover {
 footer {
 	text-align: center;
 	margin-top: 10px;
-	width: 710px;
+	width: 910px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -176,13 +176,13 @@ div.logo {
 
 /* Field Display */
 
-.fieldset {
+.boxme {
   border: 1px solid #ccc;
   margin: 10px;
   padding: 10px;
 }
 
-.fieldset div {
+.boxme div {
   margin-left: 20px;
 }
 

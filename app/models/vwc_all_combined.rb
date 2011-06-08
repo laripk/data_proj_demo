@@ -27,11 +27,11 @@ class VwcAllCombined < ActiveRecord::Base
   
   scope :regions, select('distinct region_description, region_code').order(:region_description)
   scope :countries, select('distinct country_description, country_code').order(:country_description)
-  
-  # info for meta_search
-  belongs_to :query
-  attr_accessor :query_id
-  attr_unsearchable :region_id
+  # scope :count_me, lambda{|sql| connection.execute("SELECT COUNT(*) FROM ( #{sql} ) frog") }
+
+  def self.count_me(sql)
+    connection.execute("SELECT COUNT(*) FROM ( #{sql} ) frog")
+  end
 
   def self.field_info
     # :field_name => "Field description"
@@ -53,5 +53,7 @@ class VwcAllCombined < ActiveRecord::Base
       :transport_accidents_death_rate => "Death due to transport accidents (all kinds of transport (road: car, pedestrian, cyclist, ..; water; air; ...)) in a region. Standardised death rate per 100,000 inhabitants, 3 years average."
     }
   end
+
+
 
 end
