@@ -49,22 +49,24 @@
 <br />
 <div class='boxme'>
    <span class='label'>Number of records found:</span>
-   <span class='value'><%= number_with_delimiter @count.first.first %></span>
+   <span class='value'><%= number_with_delimiter @count %></span>
 </div>
-<%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
-<table summary="Results for query">
-   <tr>
-      <% @query.selected_fields.each do |col| %>
-         <th><%= col.humanize.titlecase %></th>
-      <% end %>
-   </tr>
-   <% @results.each do |row| %>
+<div class='boxme'>
+   <%= page_entries_info @results, :entry_name => 'record' %>
+   <%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
+   <table summary="Results for query">
       <tr>
          <% @query.selected_fields.each do |col| %>
-            <td><%= row.attributes[col] %></td>
+            <th><%= col.humanize.titlecase %></th>
          <% end %>
       </tr>
-   <% end %>
-</table>
-<%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
-
+      <% @results.each do |row| %>
+         <tr>
+            <% @query.selected_fields.each do |col| %>
+               <td><%= row.attributes[col] %></td>
+            <% end %>
+         </tr>
+      <% end %>
+   </table>
+   <%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
+</div>

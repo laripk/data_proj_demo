@@ -13,10 +13,12 @@ class QueriesController < ApplicationController
     params[:results_mode] ||= 'preview'
     results = VwcAllCombined.search(@filters).relation.
                   select("DISTINCT #{@query.selected_fields.join(', ')}")
-    @count = VwcAllCombined.count_me(results.to_sql)
+    @count = VwcAllCombined.count_me(results.to_sql).first.first
     case params[:results_mode]
       when 'full-html'
-        @results = results.paginate :page => params[:page], :per_page => 20
+        @results = results.paginate :page => params[:page], 
+                                    :total_entries => @count, 
+                                    :per_page => 50
       when 'full-csv'
         @results = results
         respond_to do |format|
