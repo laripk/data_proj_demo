@@ -32,28 +32,45 @@
       <% end %>
    <% end %>
 <% end %>
+<br />
 
 <%= form_tag query_path(@query), :method => :get, :class => 'boxme' do %>
    <span class='label'>Viewing Results:</span>
-   <%= radio_button_tag 'results_mode', 'preview',   'preview'==params[:results_mode] %>
+   <%= radio_button_tag 'results_mode', 'preview', 'preview'==params[:results_mode] %>
    <%= label_tag 'results_mode_preview', 'Preview' %>
 
    <%= radio_button_tag 'results_mode', 'full-html', 'full-html'==params[:results_mode] %>
    <%= label_tag 'results_mode_full-html', 'Full - In Browser' %>
 
-   <%= radio_button_tag 'results_mode', 'full-csv',  'full-csv'==params[:results_mode] %>
+   <%= radio_button_tag 'results_mode', 'full-csv', 'full-csv'==params[:results_mode] %>
    <%= label_tag 'results_mode_full-csv', 'Full - Download CSV' %>
-
-   <%= submit_tag 'View Results' %>
 <% end %>
-<br />
+
+<script type="text/javascript">
+   function itemClicked(){
+      // alert('item ' + this.id + ' with value ' + this.value + ' having form ' + this.form + ' was clicked');
+      if ('full-csv' == this.value) {
+         this.form.writeAttribute('action', '<%= query_path(@query) %>.csv');
+      } else {
+         this.form.writeAttribute('action', '<%= query_path(@query) %>');
+      }
+      this.form.submit();
+   }
+   $$('input').each( function(item, index){ item.onclick = itemClicked; } );
+   
+</script>
+
 <div class='boxme'>
    <span class='label'>Number of records found:</span>
    <span class='value'><%= number_with_delimiter @count %></span>
 </div>
 <div class='boxme'>
-   <%= page_entries_info @results, :entry_name => 'record' %>
-   <%= will_paginate(@results) if 'full-html'==params[:results_mode] %>
+   <% if 'full-html'==params[:results_mode] %>
+      <%= page_entries_info @results, :entry_name => 'record' %>
+      <%= will_paginate(@results) %>
+   <% elsif 'preview'==params[:results_mode] %>
+      <span class='label'>Preview: Showing first <%= @results.length %> records:</span>
+   <% end %>
    <table summary="Results for query">
       <tr>
          <% @query.selected_fields.each do |col| %>
