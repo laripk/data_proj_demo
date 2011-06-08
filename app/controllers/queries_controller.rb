@@ -50,22 +50,17 @@ class QueriesController < ApplicationController
 
   # creates a new query
   def create
-    # clean up the checkbox array fields (because if I didn't put the hidden blank entries in, the fields would disappear from params if all the checkboxes were unselected)
-    params[:query][:selected_fields].delete("")
-    params[:filter][:country_code_in].delete("")
-    params[:filter][:region_code_in].delete("")
-    
+    clean_checkboxes
     @query = Query.new(params[:query])
     # puts "\n", params[:filter].inspect
-    @filter = params[:filter]
-    @query.selected_filters = @filter
+    @query.selected_filters = @filter = params[:filter]
     
     if @query.save
       redirect_to @query # show query
     else
       @title = "New Query"
-      @field_info = VwcAllCombined.field_info
-      @filter = @query.selected_filters
+      # @field_info = VwcAllCombined.field_info
+      # @filter = @query.selected_filters
       render :new
     end
   end
@@ -74,19 +69,37 @@ class QueriesController < ApplicationController
   def edit
     @title = "Edit Query"
     @query = Query.find(params[:id])
-    @filters = @query.selected_filters
-    puts "\n", @query.selected_fields.inspect
-    puts "\n", @query.selected_filters.inspect
-    puts "\n", @query.selected_filters.inspect
+    @filter = @query.selected_filters
   end
 
+  # save modifications to a query
   def update
-    # save modifications to a query
+    clean_checkboxes
+    @query = Query.find(params[:id])
+    @query.selected_filters = @filter = params[:filter]
+    if @query.update_attributes(params[:query])
+      flash[:success] = 'Query updated.'
+      redirect_to @query
+    else
+      @title = "Edit Query"
+      # @filter = @query.selected_filters
+      render :edit
+    end
   end
 
   def destroy
     # delete a query (perhaps only deactivate it)
   end
 
+  private
+  
+    # clean up the checkbox array fields (because if I didn't put the
+    # hidden blank entries in, the fields would disappear from params
+    # if all the checkboxes were unselected)
+    def clean_checkboxes
+      params[:query][:selected_fields].delete("")
+      params[:filter][:country_code_in].delete("")
+      params[:filter][:region_code_in].delete("")
+    end
 
 end

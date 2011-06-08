@@ -74,6 +74,12 @@ Creating querying interface.
 
 -----------------------
 TODO:
+update about pages
+
+fix layouts
+
+
+
 Create scheduling interface (lets user create a schedule for a query, 
 but since this is a demo won't actually run the schedules.) 
 

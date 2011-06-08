@@ -27,7 +27,8 @@ class VwcAllCombined < ActiveRecord::Base
   
   scope :regions, select('distinct region_description, region_code').order(:region_description)
   scope :countries, select('distinct country_description, country_code').order(:country_description)
-  # scope :count_me, lambda{|sql| connection.execute("SELECT COUNT(*) FROM ( #{sql} ) frog") }
+
+  default_scope order(:region_code, :year, :start_year_death_rate)
 
   def self.count_me(sql)
     connection.execute("SELECT COUNT(*) FROM ( #{sql} ) frog")

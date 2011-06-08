@@ -11,12 +11,16 @@
 			<% check_group :query, :selected_fields, 
 			      VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize.titlecase, k.to_s]}, :last, :first, @query.selected_fields %>
 		</div>
-		<p class='note'>something cogent about the date mapping between yearlies and deathrates</p>
-		<p class='note'>Region descriptions contain a lot of accented characters. The character encoding is UTF-8.</p>
+		<p class='note'>Note that the population and income data are measured yearly 
+		   while the death rates are averaged over a three year period. Thus any population/income 
+		   measurement may match up to three death rate measurements. Please be sure to pick
+		   the appropriate year fields for your data.</p>
+		<!-- p class='note'>Region descriptions contain many accented characters. The character encoding is UTF-8.</p -->
 	<% end %>
 <% end %>
 <%= field_set_tag "Filters", :id => :filter do %>
-   <p class='note'>something intelligent about all choices being ANDed together.</p>
+   <p class='note'>All filled in filters will be ANDed together. 
+      Filters left blank will not be used</p>
 	<!-- %= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do % -->
 	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
 		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>

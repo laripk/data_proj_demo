@@ -16,8 +16,10 @@
 
 <%= content_tag :div, :id => :filters, :class => 'boxme' do %>
    <span class='label bigger'>Filters</span>
+   <% allblank = true %>
    <% @filters.each do |key, value| %>
       <% unless value.blank? %>
+         <% allblank = false %>
          <%= content_tag :div, :id => key, :class => '' do %>
             <span class='label'>
                <%= key.humanize.titlecase.sub(/[GL]te/, {'Gte' => '>=', 'Lte' => '<='}) %>
@@ -30,6 +32,9 @@
             <% end %>
          <% end %>
       <% end %>
+   <% end %>
+   <% if allblank %>
+      <div><span class='note'>No Filters Specified</span></div>
    <% end %>
 <% end %>
 <br />
