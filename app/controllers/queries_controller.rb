@@ -1,7 +1,9 @@
 class QueriesController < ApplicationController
+
+  # lists all the saved queries
   def index
-    # lists all the saved queries
     @title = "All Queries"
+    @queries = Query.paginate(:page => params[:page])
   end
 
   # displays an individual saved query

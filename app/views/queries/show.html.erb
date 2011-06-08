@@ -1,8 +1,7 @@
-<h1><%= @title %></h1>
-
 <%= content_tag :div, :id => :query_name, :class => 'boxme bigger' do %>
    <span class='label'>Query Name:</span>
    <span class='value'><%= @query.name %></span>
+   <span class='actions'><%= link_to 'Edit', edit_query_path(@query) %></span>
 <% end %>
 
 <%= content_tag :div, :id => :query_selected_fields, :class => 'boxme' do %>
@@ -16,6 +15,7 @@
 
 <%= content_tag :div, :id => :filters, :class => 'boxme' do %>
    <span class='label bigger'>Filters</span>
+   <p class='note'>Note: All filters are ANDed together.</p>
    <% allblank = true %>
    <% @filters.each do |key, value| %>
       <% unless value.blank? %>
@@ -76,7 +76,7 @@
    <% elsif 'preview'==params[:results_mode] %>
       <span class='label'>Preview: Showing first <%= @results.length %> records:</span>
    <% end %>
-   <table summary="Results for query">
+   <table summary='Results for query'>
       <tr>
          <% @query.selected_fields.each do |col| %>
             <th><%= col.humanize.titlecase %></th>

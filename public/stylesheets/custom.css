@@ -186,6 +186,10 @@ div.logo {
   margin-left: 20px;
 }
 
+.boxme .actions {
+   float: right;
+}
+
 .bigger {
   font-size: 125%;
 }
@@ -209,5 +213,7 @@ div.logo {
   padding: 2px;
 }
 
-
+p.note {
+   margin-bottom: 5px;
+}
 

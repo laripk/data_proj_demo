@@ -1,2 +1,19 @@
-<h1>Queries#index</h1>
-<p>Find me in app/views/queries/index.html.erb</p>
+<div class='boxme'>
+   <%= page_entries_info @queries %>
+   <%= will_paginate(@queries) %>
+   <table summary='list of queries'>
+      <tr>
+         <th>Id</th>
+         <th>Name (Show)</th>
+         <th></th>
+      </tr>
+      <% @queries.each do |qry| %>
+         <tr>
+            <td><%= qry.id %></td>
+            <td><%= link_to qry.name, query_path(qry) %></td>
+            <td><%= link_to 'Edit', edit_query_path(qry) %></td>
+         </tr>
+      <% end %>
+   </table>
+   <%= will_paginate(@queries) %>
+</div>
