@@ -1,24 +1,24 @@
 # == Schema Information
-# Schema version: 20110523070901
+# Schema version: 20110528005942
 #
 # Table name: death_rates
 #
-#  id                              :integer         not null, primary key
-#  region_id                       :integer
-#  start_year                      :integer
-#  end_year                        :integer
+#  id                              :integer(4)      not null, primary key
+#  region_id                       :integer(4)
+#  start_year                      :integer(4)
+#  end_year                        :integer(4)
 #  all_causes                      :float
-#  all_causes_provisional          :boolean
+#  all_causes_provisional          :boolean(1)
 #  created_at                      :datetime
 #  updated_at                      :datetime
 #  cancer                          :float
-#  cancer_provisional              :boolean
+#  cancer_provisional              :boolean(1)
 #  heart_disease                   :float
-#  heart_disease_provisional       :boolean
+#  heart_disease_provisional       :boolean(1)
 #  all_accidents                   :float
-#  all_accidents_provisional       :boolean
+#  all_accidents_provisional       :boolean(1)
 #  transport_accidents             :float
-#  transport_accidents_provisional :boolean
+#  transport_accidents_provisional :boolean(1)
 #
 
 class DeathRate < ActiveRecord::Base

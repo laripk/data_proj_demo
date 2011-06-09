@@ -1,15 +1,15 @@
 # == Schema Information
-# Schema version: 20110523072303
+# Schema version: 20110528005942
 #
 # Table name: household_incomes
 #
-#  id                      :integer         not null, primary key
-#  region_id               :integer
-#  year                    :integer
+#  id                      :integer(4)      not null, primary key
+#  region_id               :integer(4)
+#  year                    :integer(4)
 #  primary                 :float
-#  primary_estimated       :boolean
-#  primary_break_in_series :boolean
-#  primary_see_explan      :boolean
+#  primary_estimated       :boolean(1)
+#  primary_break_in_series :boolean(1)
+#  primary_see_explan      :boolean(1)
 #  created_at              :datetime
 #  updated_at              :datetime
 #

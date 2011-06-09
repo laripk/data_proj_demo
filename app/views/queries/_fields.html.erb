@@ -1,0 +1,63 @@
+<%= field_set_tag nil, :id => :query do %>
+	<%= render 'shared/error_messages', :object => @query %>
+	<%= field_set_tag nil, :id => :query_name, :class => 'field bigger' do %>
+		<%= label_tag 'query[name]', 'Query Name' %>
+		<%= text_field_tag 'query[name]', @query.name, :size => 50, :maxlength => @query.column_for_attribute(:name).limit %>
+		<br />
+	<% end %>
+	<%= field_set_tag "Select Fields", :id => :choose_selected_fields, :class => 'field' do %>
+		<%= label_tag 'query[selected_fields]', 'Select Fields' %>
+		<div class='checkboxy'>
+			<% check_group :query, :selected_fields, 
+			      VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize.titlecase, k.to_s]}, :last, :first, @query.selected_fields %>
+		</div>
+		<p class='note'>Note that the population and income data are measured yearly 
+		   while the death rates are averaged over a three year period. Thus any population/income 
+		   measurement may match up to three death rate measurements. Please be sure to pick
+		   the appropriate year fields for your data.</p>
+		<!-- p class='note'>Region descriptions contain many accented characters. The character encoding is UTF-8.</p -->
+	<% end %>
+<% end %>
+<%= field_set_tag "Filters", :id => :filter do %>
+   <p class='note'>All filled in filters will be ANDed together. 
+      Filters left blank will not be used</p>
+	<!-- %= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do % -->
+	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
+		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
+		<div class='checkboxy' style='height: 20em; overflow: auto'>
+			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||=[] %>
+		</div>
+		<br />
+	<% end %>
+	
+	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
+		<%= label_tag 'filter[region_code_in]', 'Region is one of:' %>
+		<div class='checkboxy' style='height: 20em; overflow: auto'>
+			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||=[] %>
+		</div>
+		<br />
+	<% end %>
+	
+	<%= render 'numeric_field_set_for', :fieldname => :year %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :total_population %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :population_density %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :primary_income %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :start_year_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :end_year_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :all_causes_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :cancer_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :heart_disease_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :all_accidents_death_rate %>
+
+	<%= render 'numeric_field_set_for', :fieldname => :transport_accidents_death_rate %>
+<% end %>
+

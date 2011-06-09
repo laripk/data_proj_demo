@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20110524133157
+# Schema version: 20110528005942
 #
 # Table name: countries
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  code        :string(2)
 #  description :string(255)
 #  created_at  :datetime
@@ -17,4 +17,5 @@ class Country < ActiveRecord::Base
 	validates :description, :presence => true
 	
   has_many :regions
+  
 end

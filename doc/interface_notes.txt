@@ -41,6 +41,11 @@ query-parts:
 	death-rate-all-accidents         three-years(overlapping)
 	death-rate-transport-accidents   three-years(overlapping)
 	regions                          not-applicable
+	population-year
+	household-income-year
+	death-rate-start-year
+	death-rate-end-year
+	
 
 FieldInfoList
 	has_many :field_info
@@ -51,6 +56,44 @@ FieldInfoList
 		:model_field
 		:time_range_type
 		
+
+
+query:
+	storage: name & yaml-blob ?
+	
+	returns:
+		fieldinfo list - non-empty
+	filters:
+		filter = fieldinfo-restriction pair
+		filter list - may be empty
+	
+	
+	at least one fieldinfo
+	zero or more filters
+	
+
+
+
+fieldinfo list in view should be multi-select
+	or, I was thinking parallel list boxes: unused, used - click an item in one box to send it to the other
+		hmm, but what about displaying extra info? I'll think about that
+		but the main action (selecting for query) should be dead easy
+	ok, but what about attaching the filters?
+		second set of unused/used?
+	type-to-filter/select list boxes....
+
+
+back up, make it simpler:
+	given a list of fieldinfos
+	user can select subset list of fieldinfos to add to query 
+		(must have at least one, may have all)
+	user can add filters to query
+		a filter applies to a fieldinfo
+		simplifying restriction: 
+			any fieldinfo used in a filter must be included in its query selection
+			ok, maybe I won't make that restriction
+
+
 
 
 
