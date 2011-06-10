@@ -25,6 +25,7 @@
 	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
 		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
+		   <!-- %= VwcAllCombined.countries.inspect % -->
 			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||=[] %>
 		</div>
 		<br />
@@ -33,6 +34,7 @@
 	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
 		<%= label_tag 'filter[region_code_in]', 'Region is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
+		   <!-- %= VwcAllCombined.regions.inspect % -->
 			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||=[] %>
 		</div>
 		<br />

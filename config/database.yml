@@ -6,14 +6,25 @@
 #   pool: 5
 #   timeout: 5000
 
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: data_proj_demo_dev
+#   pool: 5
+#   username: root
+#   password: 
+#   socket: /tmp/mysql.sock
+
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: data_proj_demo_dev
-  pool: 5
-  username: root
-  password: 
-  socket: /tmp/mysql.sock
+    adapter: postgresql
+    host: localhost
+    username: laripk
+    database: data_proj_demo_dev
+    template: template0
+    # port: 5432
+    # password: your_db_password
+    # schema_search_path: public
+    # encoding: utf8
 
 
 # Warning: The database defined as "test" will be erased and
@@ -24,15 +35,27 @@ development:
 #   database: db/test.sqlite3
 #   pool: 5
 #   timeout: 5000
-test:
-  adapter: mysql2
-  encoding: utf8
-  database: data_proj_demo_test
-  pool: 5
-  username: root
-  password: 
-  socket: /tmp/mysql.sock
 
+# test:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: data_proj_demo_test
+#   pool: 5
+#   username: root
+#   password: 
+#   socket: /tmp/mysql.sock
+
+test:
+   adapter: postgresql
+   host: localhost
+   username: laripk
+   database: data_proj_demo_test
+   template: template0
+   # port: 5432
+   # password: your_db_password
+   # schema_search_path: public
+   # encoding: utf8
+   
   
 
 production:
