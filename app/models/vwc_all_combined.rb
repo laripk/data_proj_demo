@@ -25,13 +25,14 @@ class VwcAllCombined < ActiveRecord::Base
   before_save    { false }
   before_destroy { false }
   
-  scope :regions, select('distinct region_description, region_code').order(:region_description)
-  scope :countries, select('distinct country_description, country_code').order(:country_description)
+  scope :regions, select('distinct region_description, region_code').order('region_description')
+  scope :countries, select('distinct country_description, country_code').order('country_description')
 
-  default_scope order(:region_code, :year, :start_year_death_rate)
+  # scope :result_order, order(:region_code, :year, :start_year_death_rate)
+  RESULT_ORDER = [:region_code, :year, :start_year_death_rate, :end_year_death_rate]
 
   def self.count_me(sql)
-    connection.execute("SELECT COUNT(*) FROM ( #{sql} ) frog")
+    connection.execute("SELECT COUNT(*) AS cnt FROM ( #{sql} ) frog").first['cnt']
   end
 
   def self.field_info
