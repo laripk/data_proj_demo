@@ -17,7 +17,7 @@ class QueriesController < ApplicationController
       results = VwcAllCombined.search(@filters).relation.
                         select("DISTINCT #{@query.selected_fields.join(', ')}").
                         order(result_order)
-      @count = VwcAllCombined.count_me(results.to_sql).first['count']
+      @count = VwcAllCombined.count_me(results.to_sql)
       case params[:results_mode]
       when 'full-html'
         @results = results.paginate :page => params[:page], 
