@@ -11,21 +11,25 @@
 			<% check_group :query, :selected_fields, 
 			      VwcAllCombined.field_info.map{|k,v| [k.to_s.humanize.titlecase, k.to_s]}, :last, :first, @query.selected_fields %>
 		</div>
-		<p class='note'>Note that the population and income data are measured yearly 
-		   while the death rates are averaged over a three year period. Thus any population/income 
-		   measurement may match up to three death rate measurements. Please be sure to pick
-		   the appropriate year fields for your data.</p>
-		<!-- p class='note'>Region descriptions contain many accented characters. The character encoding is UTF-8.</p -->
+      <%= render 'shared/field_caveats' %>
 	<% end %>
 <% end %>
 <%= field_set_tag "Filters", :id => :filter do %>
-   <p class='note'>All filled in filters will be ANDed together. 
-      Filters left blank will not be used</p>
-	<!-- %= render(:layout => 'field_set_for', :locals => {:fieldname => :country_code}) do % -->
+   <p class='note'>Filters left blank will not be applied, thus returning everything 
+      relative to that filter.
+   </p>
+   <p class='note'>All filled in filters will be joined together by logical "and"s. 
+      [This is due to a decision to simplify the early versions of this prototype.]
+      This especially affects the numeric fields, as the "Greater than or equal to" and 
+      "Less than or equal to" are separate filters. 
+      So "FieldA &gt;= 3" and "FieldA &lt;= 10" would be useful, 
+      while "FieldA &gt;= 10" and "FieldA &lt;= 3" would return nothing.
+   </p>
+   <p></p><!-- make some extra space -->
+   
 	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
 		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
-		   <!-- %= VwcAllCombined.countries.inspect % -->
 			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||=[] %>
 		</div>
 		<br />
@@ -34,7 +38,6 @@
 	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
 		<%= label_tag 'filter[region_code_in]', 'Region is one of:' %>
 		<div class='checkboxy' style='height: 20em; overflow: auto'>
-		   <!-- %= VwcAllCombined.regions.inspect % -->
 			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||=[] %>
 		</div>
 		<br />

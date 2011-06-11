@@ -15,7 +15,7 @@
 
 <%= content_tag :div, :id => :filters, :class => 'boxme' do %>
    <span class='label bigger'>Filters</span>
-   <p class='note'>Note: All filters are ANDed together.</p>
+   <p class='note'>Note: All filters are joined together by logical "and"s.</p>
    <% allblank = true %>
    <% @filters.each do |key, value| %>
       <% unless value.blank? %>
