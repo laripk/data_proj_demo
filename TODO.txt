@@ -5,7 +5,7 @@
 	make data field explanations more accessible - on home? on own page?
 	change ANDing caveats (show & _fields) to plain English
 	make the ANDing caveat on _fields more obviously apply to all filters (move it up)
-	put more space between the results_mode options on show query
+   X	put more space between the results_mode options on show query
 
 	move select & filters side by side
 	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once

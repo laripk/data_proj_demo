@@ -43,10 +43,10 @@
    <span class='label'>Viewing Results:</span>
    <%= radio_button_tag 'results_mode', 'preview', 'preview'==params[:results_mode] %>
    <%= label_tag 'results_mode_preview', 'Preview' %>
-
+   &nbsp;&nbsp;&nbsp;
    <%= radio_button_tag 'results_mode', 'full-html', 'full-html'==params[:results_mode] %>
    <%= label_tag 'results_mode_full-html', 'Full - In Browser' %>
-
+   &nbsp;&nbsp;&nbsp;
    <%= radio_button_tag 'results_mode', 'full-csv', 'full-csv'==params[:results_mode] %>
    <%= label_tag 'results_mode_full-csv', 'Full - Download CSV' %>
 <% end %>
