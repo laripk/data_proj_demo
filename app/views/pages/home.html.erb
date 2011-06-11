@@ -1,16 +1,19 @@
-<p>This is a demonstration application for extracting data 
-   from a database. I have imported some of the Regional 
-   Statistics from the European Commission Eurostat for you 
-   to play with.</p>
+<p>This is a prototype of a dynamic query system for extracting data 
+   from a database. It allows you to create your own queries into the data
+   and either browse or export the results.</p>
 
-<p>I have chosen European Union Statistical Regions as my 
-metaphorical "research subjects" because the data is freely
-available and there are a number of different types of data
+<p>I have imported some of the Regional 
+   Statistics from the European Commission Eurostat as the demonstration data. 
+   I chose European Union Statistical Regions as the 
+   subjects of interest because there are a number of different types of data
 available for each region.</p>
 
 <p></p>
 <table>
    <tr>
+      <td>
+         <%= link_to "About the Data", about_data_path, :class => "start_button round" %>
+      </td>
       <td>
          <%= link_to "All Queries", queries_path, :class => "start_button round" %>
       </td>

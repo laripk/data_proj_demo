@@ -52,4 +52,19 @@ describe PagesController do
 
   end #help
 
+  describe "GET 'about_data'" do
+
+    it "should be successful" do
+      get :about_data
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get :about_data
+      response.should have_selector("title", 
+                                    :content => @base_title + " | About the Data")
+    end
+
+  end #help
+
 end

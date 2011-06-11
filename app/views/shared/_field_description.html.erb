@@ -1,0 +1,5 @@
+<% fieldname ||= :nil %>
+<dl class='description'>
+   <dt><%= fieldname.to_s.humanize.titlecase %></dt>
+   <dd><%= VwcAllCombined.field_info[fieldname] %></dd>
+</dl>

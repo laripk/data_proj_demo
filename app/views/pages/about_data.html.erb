@@ -1,0 +1,5 @@
+<p>These are the fields available.</p>
+
+<% VwcAllCombined.field_info.each do |name, description| %>
+   <%= render 'shared/field_description', :fieldname => name %>
+<% end %>
