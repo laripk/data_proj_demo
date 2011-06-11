@@ -1,4 +1,14 @@
 
+X	suggestions for field description rewrites:
+x		Year
+			add "only"
+x		Primary Income
+			Income per capita from primary market activities, e.g. the sale of labor. Calculated using the fictive currency, Purchasing Power Standards (PPS), which is roughly speaking a Euro standardized across geography but not across time.
+x		Population Density
+			In most countries and regions, this does not include inland waterways as part of the land area.
+x		Start Year/End Year
+			measurments >> measurements
+	change app name in logo
 	move select & filters side by side
 	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once
 	make _fields query name textbox actually bigger
