@@ -1,8 +1,4 @@
 
-X	change ANDing caveats (show & _fields) to plain English
-X	make the ANDing caveat on _fields more obviously apply to all filters
-X	copy the year matching caveat to about_data
-
 	move select & filters side by side
 	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once
 	make _fields query name textbox actually bigger
@@ -27,4 +23,7 @@ X	change home start button to 2: All Queries & New Query
 X	add New Query to navigation
 X	add fuller, more professional explanation to home page
 X	make data field explanations more accessible - on home? on own page?
+X	change ANDing caveats (show & _fields) to plain English
+X	make the ANDing caveat on _fields more obviously apply to all filters
+X	copy the year matching caveat to about_data
 
