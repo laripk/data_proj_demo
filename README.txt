@@ -66,29 +66,17 @@ OK, that should be enough to get us started.
 ---------------------
 Step 3: Web Interface
 
-Created welcome page and stub for Help page.
+Created welcome page.
 
-Creating querying interface.
-
-
-
------------------------
-TODO:
-update about pages
-
-fix layouts
+Created querying interface.
 
 
+---------------------
+Step 4: Clean Up
 
-Create scheduling interface (lets user create a schedule for a query, 
-but since this is a demo won't actually run the schedules.) 
+Improve the explanations and tweak a few things to prepare for having it looked at by people I want to impress.
 
 
-Re-do imports with TDD & import remaining data (that will fit in db)
-
-Create permissions-based filtering system
-
-potential source of future imports: http://faostat.fao.org/
 
 
 -----------------

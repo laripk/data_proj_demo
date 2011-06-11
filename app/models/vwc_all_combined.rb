@@ -38,10 +38,10 @@ class VwcAllCombined < ActiveRecord::Base
   def self.field_info
     # :field_name => "Field description"
     list = {
-      :region_code => "Short code for region.",
+      :region_code => "Short code identifying the statistical region.",
       :region_description => "Description for region.",
-      :country_code => "Short code for country. (Note: not all regions have associated countries.)",
-      :country_description => "Description for country. (Note: not all regions have associated countries.)",
+      :country_code => "Short code for the country.", # (Note: not all regions have associated countries.)
+      :country_description => "Description for country.", # (Note: not all regions have associated countries.)
       :year => "Year of measurement. Applies to population and income measurements.",
       :total_population => "Total population resident in a region. Average of population at the beginning of the year and population at the end of the year. (1,000 inhabitants)",
       :population_density => "Total population divided by the surface area. (inhabitants per square km) For calculation of population density, the land area concept (excluding inland water bodies like lakes or rivers) should be used wherever available. In several countries the total area, including area of lakes and rivers, is used because it is the only concept for which data are available.",

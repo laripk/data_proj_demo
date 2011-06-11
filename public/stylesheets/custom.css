@@ -208,8 +208,8 @@ div.logo {
 }
 
 .note {
-  /* background: #aef; */
-  color: #007;
+  background: #eef; 
+  color: #006400; /* #007; */
   padding: 2px;
 }
 

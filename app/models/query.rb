@@ -14,12 +14,7 @@
 
 class Query < ActiveRecord::Base
   attr_accessible :name, :selected_fields, :selected_filters
-  
-  # for meta_search
-  has_many :vwc_all_combineds
-  accepts_nested_attributes_for :vwc_all_combineds
-  # attr_accessible :vwc_all_combined_attributes
-  
+    
   serialize :selected_fields,  Array 
   serialize :selected_filters, Hash
   
@@ -27,7 +22,7 @@ class Query < ActiveRecord::Base
   validates :is_active,       :presence => true
   validates :selected_fields, :presence => true
   
-  default_scope where(:is_active => true)
+  default_scope where(:is_active => true).order(:id.desc)
   
   # def initialize(attributes=nil)
   #   super attributes
