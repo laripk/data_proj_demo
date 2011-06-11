@@ -9,4 +9,13 @@ available and there are a number of different types of data
 available for each region.</p>
 
 <p></p>
-<%= link_to "Let's play with data!", new_query_path, :class => "start_button round" %>
+<table>
+   <tr>
+      <td>
+         <%= link_to "All Queries", queries_path, :class => "start_button round" %>
+      </td>
+      <td>
+         <%= link_to "New Query", new_query_path, :class => "start_button round" %>
+      </td>
+   </tr>
+</table>
