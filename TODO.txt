@@ -1,0 +1,26 @@
+
+   X	add sort order to queries index
+	add fuller, more professional explanation to home page
+	change home start button to 2: All Queries & New Query
+	make data field explanations more accessible - on home? on own page?
+	change ANDing caveats (show & _fields) to plain English
+	make the ANDing caveat on _fields more obviously apply to all filters (move it up)
+	put more space between the results_mode options on show query
+
+	move select & filters side by side
+	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once
+	make _fields query name textbox actually bigger
+	
+	
+	
+       
+	Create scheduling interface (lets user create a schedule for a query, 
+	but since this is a demo won't actually run the schedules.) 
+
+
+	Re-do imports with TDD & import remaining data (that will fit in db)
+
+	Create permissions-based filtering system
+
+	potential source of future imports: http://faostat.fao.org/
+
