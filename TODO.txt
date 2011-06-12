@@ -1,15 +1,6 @@
 
-X	suggestions for field description rewrites:
-x		Year
-			add "only"
-x		Primary Income
-			Income per capita from primary market activities, e.g. the sale of labor. Calculated using the fictive currency, Purchasing Power Standards (PPS), which is roughly speaking a Euro standardized across geography but not across time.
-x		Population Density
-			In most countries and regions, this does not include inland waterways as part of the land area.
-x		Start Year/End Year
-			measurments >> measurements
 	change app name in logo
-	move select & filters side by side
+X	move select & filters side by side
 	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once
 	make _fields query name textbox actually bigger
 	add min & max notes for the numeric fields
@@ -36,4 +27,5 @@ X	make data field explanations more accessible - on home? on own page?
 X	change ANDing caveats (show & _fields) to plain English
 X	make the ANDing caveat on _fields more obviously apply to all filters
 X	copy the year matching caveat to about_data
+X	field description rewrites: Year, Primary Income, Population Density, Start Year/End Year
 
