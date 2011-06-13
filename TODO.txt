@@ -1,21 +1,36 @@
 
-X	suggestions for field description rewrites:
-x		Year
-			add "only"
-x		Primary Income
-			Income per capita from primary market activities, e.g. the sale of labor. Calculated using the fictive currency, Purchasing Power Standards (PPS), which is roughly speaking a Euro standardized across geography but not across time.
-x		Population Density
-			In most countries and regions, this does not include inland waterways as part of the land area.
-x		Start Year/End Year
-			measurments >> measurements
-	change app name in logo
-	move select & filters side by side
-	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once
-	make _fields query name textbox actually bigger
+	FILL IN THE TESTS/REDO WITH TDD
 	add min & max notes for the numeric fields
-	fill in the tests
+	maybe add checkbox helpers - un/select all
 	
-       
+	create flexible add-filter
+		hash of hashes
+			first layer: fields
+				second layer: "operators", but really metasearch field names
+		then I need a way to generate the form display, 
+			or do I just want to do the javascript hiding thing? 
+				blech for ultimate version, but maybe good for current
+			how about partials?
+				metasearch fieldnames index into partials eval list
+					ow
+		list of filters to display choices
+			way to remove already selected filters from display list	
+			fields
+				country
+				region
+				each of the numerics
+			operators available for field
+				country/region
+					is one of list ("code in")
+					description matches
+					region in only
+						if country already specified, apply that filter to choose list
+				numerics
+					lte, gte
+					between A and B
+					outside of A and B
+
+
 	Create scheduling interface (lets user create a schedule for a query, 
 	but since this is a demo won't actually run the schedules.) 
 
@@ -36,4 +51,9 @@ X	make data field explanations more accessible - on home? on own page?
 X	change ANDing caveats (show & _fields) to plain English
 X	make the ANDing caveat on _fields more obviously apply to all filters
 X	copy the year matching caveat to about_data
+X	field description rewrites: Year, Primary Income, Population Density, Start Year/End Year
+X	move select & filters side by side
+X	make _fields query name textbox actually bigger
+X	change app name in logo
+X	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once - uses simple javascript hiding...
 

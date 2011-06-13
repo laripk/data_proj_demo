@@ -15,6 +15,11 @@ available and there are a number of different types of data
 available for each region.
 
 
+A note to my agile programming friends: I know there aren't nearly 
+enough tests. This is pretty much all spike at this point. 
+Tests are coming soon!
+
+
 -----------------------------------
 Step 1: Choose & Download Some Data
 
@@ -76,7 +81,7 @@ Step 4: Clean Up
 
 Improve the explanations and tweak a few things to prepare for having it looked at by people I want to impress.
 
-
+Also added some javascript to only show the relevant filters.
 
 
 -----------------

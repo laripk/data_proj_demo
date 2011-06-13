@@ -16,4 +16,15 @@ module QueriesHelper
       end
    end
    
+   # ListOption = Struct.new(:text, :value, :id)
+   def filter_select_opts
+      [{:text => '', :value => 'none', :id => 'opt-none', :visible => true}] + 
+         VwcAllCombined.filterables.map{|fld| 
+            {:text => "Filter on #{fld.humanize.titlecase}", 
+             :value => fld, 
+             :id => "opt-#{fld}", 
+             :visible => true} 
+         }
+   end
+   
 end

@@ -26,6 +26,13 @@ section h1 {
 	font-size: 200%;
 }
 
+td {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* old field stuff, errors */
+
 div.field, div.actions {
 	margin-bottom: 10px;
 }
@@ -182,15 +189,42 @@ div.logo {
   padding: 10px;
 }
 
+fieldset {
+  margin: 10px;
+  padding: 10px;
+}
+
+fieldset#query {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .boxme div {
   margin-left: 20px;
+}
+
+.boxme div#query_name {
+  margin: 10px 0px;
 }
 
 .boxme .actions {
    float: right;
 }
 
+fieldset .actions {
+  text-align: center;
+}
+
+.rightme {
+  float: right;
+}
+
 .bigger {
+  font-size: 125%;
+}
+
+.bigger input[type=text] {
   font-size: 125%;
 }
 
@@ -204,6 +238,10 @@ div.logo {
 
 .checkboxy {
   margin-left: 20px;
+  margin-bottom: -10px;
+}
+
+fieldset#choose_selected_fields .checkboxy {
   margin-bottom: 20px;
 }
 
@@ -216,4 +254,19 @@ div.logo {
 p.note {
    margin-bottom: 5px;
 }
+
+table.data td, table.data th {
+  padding: 4px;
+}
+
+/* Show/Hide */
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: normal;
+}
+
 

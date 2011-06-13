@@ -24,6 +24,7 @@ class Query < ActiveRecord::Base
   
   default_scope where(:is_active => true).order(:id.desc)
   
+  
   # def initialize(attributes=nil)
   #   super attributes
   #   if @is_active.nil?
