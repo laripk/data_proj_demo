@@ -35,8 +35,8 @@ class VwcAllCombined < ActiveRecord::Base
     connection.execute("SELECT COUNT(*) AS cnt FROM ( #{sql} ) frog").first['cnt']
   end
 
+  # :field_name => "Field description"
   def self.field_info
-    # :field_name => "Field description"
     list = {
       :region_code => "Short code identifying the statistical region.",
       :region_description => "Description for region.",
@@ -58,6 +58,11 @@ class VwcAllCombined < ActiveRecord::Base
     }
   end
 
-
+  def self.filterables
+    [ 'country', 'region', 'year', 'total_population', 'population_density',
+      'primary_income', 'start_year_death_rate', 'end_year_death_rate', 
+      'all_causes_death_rate', 'cancer_death_rate', 'heart_disease_death_rate',
+      'all_accidents_death_rate', 'transport_accidents_death_rate' ]
+  end
 
 end

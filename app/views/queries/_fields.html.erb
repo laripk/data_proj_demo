@@ -7,7 +7,7 @@
 	<% end %>
    <table>
       <tr>
-         <td style="vertical-align:top">
+         <td style="vertical-align:top;width:45%">
          	<%= field_set_tag "Select Fields", :id => :choose_selected_fields, :class => 'field' do %>
          		<%= label_tag 'query[selected_fields]', 'Select Fields' %>
          		<div class='checkboxy'>
@@ -20,6 +20,7 @@
 <% end %>
          <td style="vertical-align:top">
             <%= field_set_tag "Filters", :id => :filter do %>
+            <div id='html_filter_preface' class='visible'>
                <p class='note'>Filters left blank will not be applied, thus returning everything 
                   relative to that filter.
                </p>
@@ -30,14 +31,31 @@
                   So "FieldA &gt;= 3" and "FieldA &lt;= 10" would be useful, 
                   while "FieldA &gt;= 10" and "FieldA &lt;= 3" would return nothing.
                </p>
+            </div>
+            <div id='js_filter_preface' class='hidden'>
+               <p class='note'>
+                  Return records that match <b>all</b> of the following filters:
+               </p>
+               <%= label_tag 'add_filter', 'Add a Filter:' %>
+               <% opts = filter_select_opts %>
+               <%= select_tag 'add_filter', options_for_select(opts.map{|o| [o[:text], o[:value], {:id => o[:id]}] }) %>
+               <%= javascript_tag do %>
+                  var AddFilterOptions = <%= raw opts.to_json %>;
+               <% end %>
+            </div>
                <p></p><!-- make some extra space -->
-   
+            <script type="text/javascript">
+               // change the filter-preface for javascript-enabled browsers
+               $('html_filter_preface').removeClassName('visible').addClassName('hidden');
+               $('js_filter_preface').removeClassName('hidden');
+            </script>
             	<%= field_set_tag 'Filter on Country', :id => 'filter_country', :class => 'field' do %>
             		<%= label_tag 'filter[country_code_in]', 'Country is one of:' %>
             		<div class='checkboxy' style='height: 20em; overflow: auto'>
             			<% check_group :filter, :country_code_in, VwcAllCombined.countries, :country_code, :country_description, @filter[:country_code_in]||=[] %>
             		</div>
             		<br />
+            		<%= button_to_function 'Remove this Filter', "remove_filter('country')", :class => 'rightme hidden' %>
             	<% end %>
 	
             	<%= field_set_tag 'Filter on Region', :id => 'filter_region', :class => 'field' do %>
@@ -46,6 +64,7 @@
             			<% check_group :filter, :region_code_in, VwcAllCombined.regions, :region_code, :region_description, @filter[:region_code_in]||=[] %>
             		</div>
             		<br />
+            		<%= button_to_function 'Remove this Filter', "remove_filter('region')", :class => 'rightme hidden' %>
             	<% end %>
 	
             	<%= render 'numeric_field_set_for', :fieldname => :year %>
@@ -73,4 +92,81 @@
          </td>
       </tr>
    </table>
+<script type="text/javascript">
+   function show_filter(fname){
+      name = fname.replace('filter_', ''); // standardize our expectation: sometimes we get "filter_name", sometimes we get "name"
+      $('filter_'+name).show();
+      // $('opt-'+name).hide();
+      setOptionVisible('opt-'+name, false);
+   }
+   function hide_filter(fname){
+      name = fname.replace('filter_', ''); // standardize our expectation: sometimes we get "filter_name", sometimes we get "name"
+      $('filter_'+name).hide();
+      // $('opt-'+name).show();
+      setOptionVisible('opt-'+name, true);
+   }
+   function setOptionVisible(optname, visible){
+      var opti = AddFilterOptions.find(function(optInfo){ 
+         return optInfo.id == optname;
+      });
+      // alert(opti.id+visible);
+      opti.visible = visible;
+   }
+   function isPresent(fieldset){
+      var texts = fieldset.select('input[type=text]').any(function(inItem){
+         return inItem.present(); 
+      });
+      var checkboxes = fieldset.select('input[type=checkbox]').any(function(inItem){ 
+         return inItem.checked; 
+      });
+      var numerics = fieldset.select('input[type=number]').any(function(inItem){ 
+         return inItem.getValue().length > 0; 
+      });
+      return texts || checkboxes || numerics;
+   }
+   function redisplayAddFilter(){
+      var sel = $('add_filter');
+      var oldopts = sel.options;
+      sel.childElements().each(Element.remove);
+      AddFilterOptions.each(function(optInfo){
+         if(optInfo.visible){
+            var opt = new Element('option', {'value': optInfo.value, 'id': optInfo.id});
+            opt.text = optInfo.text;
+            sel.options.add(opt);
+         }
+      });
+      // alert('redisplayed!');
+   }
+   function remove_filter(fname){
+      var fieldset = $('filter_'+fname);
+      fieldset.select('input[type=text]','input[type=number]').each(function(inItem){
+         inItem.value = '';
+      });
+      fieldset.select('input[type=checkbox]').each(function(inItem){
+         inItem.checked = false;
+      });
+      hide_filter(fname);
+      redisplayAddFilter();
+   }
 
+   Event.observe(window, 'load', function() {
+      // show/hide filters on load according to whether they're filled in
+      var fieldFilters = $$('fieldset#filter fieldset');
+      fieldFilters.each(function(fldItem){
+         if(isPresent(fldItem)){
+            show_filter(fldItem.identify());
+         }else{
+            hide_filter(fldItem.identify());
+         }
+      });
+      redisplayAddFilter();
+      $$('input[type=button]').each(function(item){ item.removeClassName('hidden'); });
+   });
+   Event.observe('add_filter', 'change', function(event){
+      var val = this.getValue();
+      if(val != 'none'){
+         show_filter(val);
+      }
+      redisplayAddFilter();
+   });
+</script>

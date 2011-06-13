@@ -212,6 +212,14 @@ fieldset#query {
    float: right;
 }
 
+fieldset .actions {
+  text-align: center;
+}
+
+.rightme {
+  float: right;
+}
+
 .bigger {
   font-size: 125%;
 }
@@ -250,3 +258,15 @@ p.note {
 table.data td, table.data th {
   padding: 4px;
 }
+
+/* Show/Hide */
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: normal;
+}
+
+
