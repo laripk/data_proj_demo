@@ -27,6 +27,7 @@ class QueriesController < ApplicationController
         @results = results
         respond_to do |format|
           format.csv
+          format.html { params[:results_mode] = 'preview'; redirect_to params }
         end
       else # includes 'preview' - ie, default to preview mode
         @results = results.limit(12)
