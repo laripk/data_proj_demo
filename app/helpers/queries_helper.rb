@@ -9,7 +9,7 @@ module QueriesHelper
          @results.each do |record|
             row = []
             flds.each do |f|
-               row << record[f]
+               row << ( record[f].nil? ? params[:nulls] : record[f] )
             end
             csv << row
          end

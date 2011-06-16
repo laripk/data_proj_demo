@@ -57,6 +57,13 @@
    &nbsp;&nbsp;&nbsp;
    <%= radio_button_tag 'results_mode', 'full-csv', 'full-csv'==params[:results_mode] %>
    <%= label_tag 'results_mode_full-csv', 'Full - Download CSV' %>
+   &nbsp;&nbsp;&nbsp;   
+   &nbsp;&nbsp;&nbsp;   
+   &nbsp;&nbsp;&nbsp;   
+   <span>
+      <%= label_tag 'nulls', 'Value to Use for NULL values:' %>
+      <%= text_field_tag 'nulls', params[:nulls], :size => 5 %>
+   </span>
 <% end %>
 
 <script type="text/javascript">
@@ -69,8 +76,8 @@
       }
       this.form.submit();
    }
-   $$('input').each( function(item, index){ item.onclick = itemClicked; } );
-   
+   $$('input[type=radio]').each( function(item){ item.onclick  = itemClicked; } );
+   $$('input[type=text]' ).each( function(item){ item.onchange = itemClicked; } );
 </script>
 
 <div class='boxme'>
@@ -93,7 +100,7 @@
       <% @results.each do |row| %>
          <tr>
             <% @query.selected_fields.each do |col| %>
-               <td><%= row.attributes[col] %></td>
+               <td><%= row.attributes[col].nil? ? params[:nulls] : row.attributes[col] %></td>
             <% end %>
          </tr>
       <% end %>

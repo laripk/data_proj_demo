@@ -1,5 +1,8 @@
 
+X	add user option for how to display NULLs
 	FILL IN THE TESTS/REDO WITH TDD
+	
+	
 	add min & max notes for the numeric fields
 	maybe add checkbox helpers - un/select all
 	

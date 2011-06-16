@@ -24,7 +24,7 @@ end
 
 group :development do 
    gem 'rspec-rails', '2.6.0'
-   gem 'heroku', '2.1.4'
+   gem 'heroku'
    gem 'annotate-models', '1.0.4'
 end 
 
