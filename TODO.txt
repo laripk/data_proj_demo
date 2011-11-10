@@ -1,5 +1,4 @@
 
-X	add user option for how to display NULLs
 	FILL IN THE TESTS/REDO WITH TDD
 	
 	
@@ -59,4 +58,5 @@ X	move select & filters side by side
 X	make _fields query name textbox actually bigger
 X	change app name in logo
 X	make a simple dynamic add-filter (using just the ones have now) instead of displaying them all at once - uses simple javascript hiding...
+X	add user option for how to display NULLs
 
